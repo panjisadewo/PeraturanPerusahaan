@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "InputKebijakan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>InputKebijakan</h2>
+<hr />
+@using (Html.BeginForm("InputKebijakan", "Summary", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <label>Hasil Review</label>
+            <div>
+                <select required id="HasilReview" name="HasilReview" class="form-control input-sm select2"></select>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <label>Updateing</label>
+            <div>
+                <select required id="Updating" name="Updating" class="form-control input-sm select2"></select>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-6">
+            <label>Dasar Updating</label>
+            <div>
+                <select required id="DasarUpdating" name="DasarUpdating" class="form-control input-sm select2"></select>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <label>Acuan Updating</label>
+            <div>
+                <select required id="AcuanUpdating" name="AcuanUpdating" class="form-control input-sm select2"></select>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-6">
+            <label>Sebelum</label>
+            <br />
+            <textarea id="Sebelum" name="Sebelum" style="width:100%;"></textarea>
+        </div>
+        <div class="col-sm-6">
+            <label>Sesudah</label>
+            <br />
+            <textarea id="Sesudah" name="Sesudah" style="width:100%;"></textarea>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-6">
+            <label>Dasar Penyusunan / Perubahan</label>
+            <br />
+            <textarea id="DasarPenyusunan" name="DasarPenyusunan" style="width:100%;"></textarea>
+        </div>
+    </div>
+    <input hidden value="@ViewBag.BabId" name="BabId" id="BabId" />
+    <br />
+    <button type="submit" class="btn-block">Simpan</button>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+            $(document).ready(function () {
+                LoadHasilReviewId();
+                LoadUpdatingId();
+                LoadDasarUpdatingId();
+                LoadAcuanUpdatingId();
+            })
+
+            function LoadHasilReviewId() {
+                $.ajax({
+                    type: "GET",
+                    url: "/MasterHasilReviews/Get",
+                    async: false,
+                    dataType: "JSON",
+                    success: function (data) {
+                        var html = '';
+                        var i = 1;
+                        $.each(data, function (index, val) {
+                            html += '<option value="' + val.Id + '">' + val.Nama + '</option>';
+                        });
+                        $('#HasilReview').html(html);
+                    }
+                })
+            }
+
+            function LoadUpdatingId() {
+                $.ajax({
+                    type: "GET",
+                    url: "/MasterUpdatings/Get",
+                    async: false,
+                    dataType: "JSON",
+                    success: function (data) {
+                        var html = '';
+                        var i = 1;
+                        $.each(data, function (index, val) {
+                            html += '<option value="' + val.Id + '">' + val.Nama + '</option>';
+                        });
+                        $('#Updating').html(html);
+                    }
+                })
+            }
+
+            function LoadDasarUpdatingId() {
+                $.ajax({
+                    type: "GET",
+                    url: "/MasterDasarUpdatetings/Get",
+                    async: false,
+                    dataType: "JSON",
+                    success: function (data) {
+                        var html = '';
+                        var i = 1;
+                        $.each(data, function (index, val) {
+                            html += '<option value="' + val.Id + '">' + val.Nama + '</option>';
+                        });
+                        $('#DasarUpdating').html(html);
+                    }
+                })
+            }
+
+            function LoadAcuanUpdatingId() {
+                $.ajax({
+                    type: "GET",
+                    url: "/MasterAcuanUpdatetings/Get",
+                    async: false,
+                    dataType: "JSON",
+                    success: function (data) {
+                        var html = '';
+                        var i = 1;
+                        $.each(data, function (index, val) {
+                            html += '<option value="' + val.Id + '">' + val.Nama + '</option>';
+                        });
+                        $('#AcuanUpdating').html(html);
+                    }
+                })
+            }
+    </script>
+}

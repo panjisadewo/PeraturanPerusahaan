@@ -1,0 +1,112 @@
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\csc.exe
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\Microsoft.CSharp.Core.targets
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\Microsoft.VisualBasic.Core.targets
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\System.Collections.Immutable.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\System.Reflection.Metadata.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\vbc.exe
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\VBCSCompiler.exe
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\PP.Tests.dll.config
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\PP.Tests.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\PP.Tests.pdb
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\PP.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.Helpers.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.Mvc.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.Razor.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.WebPages.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.Owin.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.Optimization.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.Owin.Security.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Owin.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\EntityFramework.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\PP.pdb
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.Helpers.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.Mvc.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.Razor.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.WebPages.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.Owin.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\System.Web.Optimization.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.Owin.Security.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\EntityFramework.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\obj\Debug\PP.Tests.csprojResolveAssemblyReference.cache
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\obj\Debug\PP.Tests.dll
+C:\project_BNI\ASPNET\Panji\PP\PP.Tests\obj\Debug\PP.Tests.pdb
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\csc.exe
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\Microsoft.CSharp.Core.targets
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\Microsoft.VisualBasic.Core.targets
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\System.Collections.Immutable.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\System.Reflection.Metadata.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\vbc.exe
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\VBCSCompiler.exe
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\PP.Tests.dll.config
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\PP.Tests.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\PP.Tests.pdb
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\PP.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.Helpers.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.Mvc.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.Razor.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.WebPages.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.Owin.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.Optimization.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.Owin.Security.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Owin.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\EntityFramework.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\PP.pdb
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.Helpers.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.Mvc.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.Razor.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.WebPages.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.Owin.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\System.Web.Optimization.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.Owin.Security.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\EntityFramework.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\obj\Debug\PP.Tests.csprojResolveAssemblyReference.cache
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\obj\Debug\PP.Tests.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP.Tests\obj\Debug\PP.Tests.pdb

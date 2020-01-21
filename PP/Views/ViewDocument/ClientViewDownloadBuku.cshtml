@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PP.ViewModels.DashboardVM>
+@{
+    ViewBag.Title = "ClientViewDownloadBuku";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{int a = 0;}
+<br />
+<center><h1>LIST BUKU YANG ADA</h1></center>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>No.</td>
+            <td>Nama</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    @foreach (var kelompok in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@{a = a + 1;}@(a)</td>
+                <td>@kelompok.NamaBuku</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = kelompok.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = kelompok.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = kelompok.Id })
+                </td>
+            </tr>
+        </tbody>}
+</table>

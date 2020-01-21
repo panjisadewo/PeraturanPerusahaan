@@ -1,0 +1,73 @@
+﻿@model IEnumerable<PP.ViewModels.DashboardKelompokVM>
+
+@{
+    ViewBag.Title = "Master Buku";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dashboard Pemantau Progress</h2>
+
+@*Untuk Programmer Selanjutnya Ini Masih Data Statis Ya*@
+
+<br />
+<br />
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var kelompok in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card-deck" style="background-color: green">
+                        <div class="card">
+                            <div class="card-body">
+                                <center><h5 class="card-title">@kelompok.NamaKelompok</h5></center>
+                                <div class="card-text">
+                                    <div class="row">
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-sm-7">
+                                            <a>Target</a>
+                                            <br />
+                                            <a>Pencapaian</a>
+                                            <br />
+                                            <a>Jumlah Buku</a>
+                                            <br />
+                                            <a>Jumlah Bab</a>
+                                            <br />
+                                            <a>Jumlah Sub Bab</a>
+                                            <br />
+                                            <a>Jumalh Sub Sub Bab</a>
+                                            <br />
+                                            <a>Status</a>
+                                            <br />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <a>:100%</a>
+                                            <br />
+                                            <a>:100%</a>
+                                            <br />
+                                            <a>:90</a>
+                                            <br />
+                                            <a>:90</a>
+                                            <br />
+                                            <a>:90</a>
+                                            <br />
+                                            <a>:1</a>
+                                            <br />
+                                            <a>:On Behind</a>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>

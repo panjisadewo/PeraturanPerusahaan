@@ -1,0 +1,358 @@
+﻿@model PP.Models.Master.MasterBook
+
+    @{
+        ViewBag.Title = "Master Book";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Master Book</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModalinput" style="margin-left:1%; margin-top:13px;" onclick="return AddData()">Add Data</button>
+    </p>
+    <br />
+    <br />
+    <table id="example1" class="table table-bordered table-responsive table-striped">
+        <thead>
+            <tr>
+                <td rowspan="2">No.</td>
+                <td rowspan="2">JUDUL BAB</td>
+                <td rowspan="2">No_Instruksi</td>
+                <td rowspan="2">Tanggal berlaku</td>
+                <td rowspan="2">Tanggal Jatuh Tempo</td>
+                <td rowspan="2">Time Line</td>
+                <td colspan="2">Progress</td>
+                <td colspan="2">Target</td>
+                <td rowspan="2">Status Proposal</td>
+                <td rowspan="2">Action</td>
+            </tr>
+            <tr>
+                <td>Detail</td>
+                <td>%</td>
+                <td>Detail</td>
+                <td>%</td>
+            </tr>
+        </thead>
+        <tbody class="tbody"></tbody>
+    </table>
+
+    <div class="modal fade" id="myModalinput" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabelAddData">Add Data</h4>
+                    <h4 class="modal-title" id="myModalLabelUpdateData">Update Data</h4>
+                </div>
+                <div class="container-fluid">
+                    <div class="modal-body">
+                        <form>
+                            <input hidden name="Id" id="Id" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nama</label>
+                                    <input type="Text" name="NamaBab" id="NamaBab" class="form-control" style="border-color:black; width:100%" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Berlaku</label>
+                                    @Html.ValidationMessageFor(model => model.TanggalBerlaku, "", new { @class = "text-danger" })
+                                    <input required type="datetime-local" name="TanggalBerlaku" id="TanggalBerlaku" class="form-control" style="border-color:black; width:100%" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Status Proposal</label>
+                                    <input type="text" name="StatusProposal" id="StatusProposal" class="form-control" style="border-color:black; width:100%" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Urutan</label>
+                                    <input type="number" name="NoUrutan" id="NoUrutan" class="form-control" style="border-color:black" />
+                                </div>
+                                <div class="form-group">
+                                    <label>TimeLine</label>
+                                    @Html.ValidationMessageFor(model => model.TimeLine, "", new { @class = "text-danger" })
+                                    <input type="datetime-local" name="TimeLine" id="TimeLine" class="form-control" style="border-color:black" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>No Instruksi</label>
+                                    <input type="text" name="NoInstruksi" id="NoInstruksi" class="form-control" style="border-color:black" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="Save" onclick="Simpan();">Add Data</button>
+                    <button type="submit" class="btn btn-primary" id="Update" onclick="Simpan();">Update Data</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="ClearScreen();">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModalView" tabindex="-1" role="dialog" aria-labelledby="myModalView" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">View Data</h4>
+                </div>
+                <div class="container-fluid">
+                    <div class="modal-body">
+                        <form>
+                            <input hidden name="IdView" id="IdView" />
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nama</label>
+                                    <input readonly type="Text" name="NamaBabView" id="NamaBabView" class="form-control" style="border-color:black; width:100%" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Berlaku</label>
+                                    <input readonly required type="text" name="TanggalBerlakuView" id="TanggalBerlakuView" class="form-control" style="border-color:black; width:100%" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Status Proposal</label>
+                                    <input readonly type="text" name="StatusProposalView" id="StatusProposalView" class="form-control" style="border-color:black; width:100%" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Urutan</label>
+                                    <input readonly type="number" name="NoUrutanView" id="NoUrutanView" class="form-control" style="border-color:black" />
+                                </div>
+                                <div class="form-group">
+                                    <label>TimeLine</label>
+                                    @Html.ValidationMessageFor(model => model.TimeLine, "", new { @class = "text-danger" })
+                                    <input readonly type="text" name="TimeLineView" id="TimeLineView" class="form-control" style="border-color:black" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>No Instruksi</label>
+                                    <input readonly type="text" name="NoInstruksiView" id="NoInstruksiView" class="form-control" style="border-color:black" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @*<button type="submit" class="btn btn-primary" onclick="Accept();">Accept Data</button>
+                    <button type="submit" class="btn btn-primary" onclick="Reject();">Reject Data</button>
+                    <button type="submit" class="btn btn-primary" onclick="SubmitData();">Submit Data</button>*@
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="cancelView();">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Content/sweetalert/sweetalert.min.js"></script>
+        <link href="~/Content/sweetalert/sweetalert.css" rel="stylesheet" />
+        <script>
+            $(document).ready(function () {
+                LoadIndexBooks();
+                $('#example1').DataTable({
+                    "ajax": LoadIndexBooks(),
+                    "scrollX": true,
+                });
+            })
+            function LoadIndexBooks() {
+                $.ajax({
+                    type: "GET",
+                    url: "/MasterBooks/Ambil_Index",
+                    async: false,
+                    dataType: "JSON",
+                    success: function (data) {
+                        var html = '';
+                        var i = 1;
+                        $.each(data, function (index, val) {
+                            html += '<tr>';
+                            html += '<td>' + i + '</td>';
+                            html += '<td> <input type="checkbox" name="id[]" id="' + val.Id + '" class="checkbox"/>' + val.Nama + '</td>';
+                            html += '<td>' + val.NoInstruksi + '</td>';
+                            html += '<td>' + formatDate(val.TanggalBerlaku) + '</td>';
+                            html += '<td>' + formatDate(val.TanggalJatuhTempo) + '</td>';
+                            html += '<td>' + formatDate(val.TimeLine) + '</td>';
+                            html += '<td>' + val.Id + '</td>';
+                            html += '<td>' + val.Id + '</td>';
+                            if (val.Id == null) {
+                                html += '<td> - </td>';
+                            } else {
+                                html += '<td>' + val.Id + '</td>';
+                            }
+
+                            html += '<td>' + formatDate(val.TanggalBerlaku) + '</td>';
+                            html += '<td>' + val.StatusProposal + '</td>';
+
+                            html += '<td><div class="btn-group-vertical"> <a href="#" class="btn btn-warning" onclick="return AmbilId(' + val.Id + ')">Edit</a>';
+                            html += ' <a href="#" class="btn btn-danger" onclick="return Delete(' + val.Id + ')">Delete</a>';
+                            html += ' <a href="#" class="btn btn-info" onclick="return lihatId(' + val.Id + ')">View</a>';
+                            //html += ' <a style="display:none;" href="#" class="btn btn-info" onclick="return UploadBuku(' + val.Id + ')">Upload</a>';
+                            //html += ' <a href="#" class="btn btn-info" onclick="return UploadBuku(' + val.Id + ')">Upload</a>';
+                            //html += ' <a href="#" class="btn btn-info" onclick="return Download(' + val.Id + ')">Download</a>';
+                            //html += ' <a href="#" class="btn btn-info" onclick="return Relevan(' + val.Id + ')"> Relevan</a></div></td>';
+                            html += '</tr>';
+                            i++;
+                        });
+                        $('.tbody').html(html);
+                    }
+                })
+            }
+
+            function formatDate(dates) {
+                date = new Date(parseInt(dates.substr(6)));
+                var year = date.getFullYear();
+                var month = (1 + date.getMonth()).toString();
+                month = month.length > 1 ? month : '0' + month;
+                var day = date.getDate().toString();
+                day = day.length > 1 ? day : '0' + day;
+                return day + '/' + month + '/' + year
+                ;
+            }
+
+            function AmbilId(id) {
+                $.ajax({
+                    url: "/MasterBooks/GetById/" + id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (result) {
+                        $('#Id').val(result.Id);
+                        $('#NamaBab').val(result.Nama);
+                        $('#TanggalBerlaku').val(result.TanggalBerlaku);
+                        $('#StatusProposal').val(result.StatusProposal);
+                        $('#NoUrutan').val(result.Urutan);
+                        $('#TimeLine').val(result.TimeLine);
+                        $('#NoInstruksi').val(result.NoInstruksi);
+
+                        $('#myModalinput').modal('show');
+                        $('#myModalLabelAddData').hide();
+                        $('#myModalLabelUpdateData').show();
+                        $('#Update').show();
+                        $('#Save').hide();
+                    }
+                })
+            }
+
+            function lihatId(id) {
+                $.ajax({
+                    url: "/MasterBooks/GetByNamaId/" + id,
+                    type: "POST",
+                    dataType: "json",
+                    success: function (result) {
+                        $('#IdView').val(result.Id);
+                        $('#IdBukuView').val(result.NamaBuku);
+                        $('#NamaBabView').val(result.Nama);
+                        $('#TanggalBerlakuView').val(formatDate(result.TanggalBerlaku));
+                        $('#StatusProposalView').val(result.StatusProposal);
+                        $('#IdKelompokView').val(result.NamaKelompok);
+                        $('#NoUrutanView').val(result.Urutan);
+                        $('#TimeLineView').val(formatDate(result.TimeLine));
+                        $('#NoInstruksiView').val(result.NoInstruksi);
+
+                        $('#myModalView').modal('show');
+                    }
+                });
+            }
+
+            function cancelView() {
+                window.location.href = '/MasterBooks';
+            }
+
+            function ClearScreen() {
+                $('#Id').val("");
+                $('#NamaBab').val("");
+                $('#TanggalBerlaku').val("");
+                $('#StatusProposal').val("");
+                $('#NoUrutan').val("");
+                $('#TimeLine').val("");
+                $('#NoInstruksi').val("");
+            }
+
+            function AddData() {
+                $('#myModalinput').modal('show');
+                $('#myModalLabelAddData').show();
+                $('#myModalLabelUpdateData').hide();
+                $('#Update').hide();
+                $('#Save').show();
+            }
+
+            function Simpan() {
+                var Data = new Object();
+                Data.Id = $('#Id').val();
+                Data.StatusProposal = $('#StatusProposal').val();
+                Data.TanggalBerlaku = $('#TanggalBerlaku').val();
+                Data.TimeLine = $('#TimeLine').val();
+                Data.NoInstruksi = $('#NoInstruksi').val();
+                Data.Nama = $('#NamaBab').val();
+                Data.Urutan = $('#NoUrutan').val();
+
+                if (Data.TanggalBerlaku == "" || Data.TimeLine == "") {
+                    swal("Oops", "Mohon diisi Tanggal Berlaku dan Timeline", "error");
+                } else {
+                    $.ajax({
+                        url: "/MasterBooks/Save",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: Data,
+                        success: function (balik) {
+                            swal({
+                                title: "Added Successfully!",
+                                text: "That data has been Add!",
+                                type: "success"
+                            },
+                               function () {
+                                   $('#myModalinput').modal('hide');
+                                   window.location.href = '/MasterBooks';
+                               });
+                        },
+                        error: function (response) {
+                            swal("Oops", "We failed to Added!", "error");
+                        }
+                    });
+                }
+            }
+
+            function UploadBuku(id) {
+                window.location.href = '/MasterBabs/UploadBukus/' + id;
+            }
+
+            function Download(id) {
+                $.ajax({
+                    url: "/MasterBabs/GetByNamaId/" + id,
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (balik) {
+                        window.location.href = '/Dataupload/' + balik.Dokument;
+                    }
+                });
+            }
+
+            function Delete(id) {
+                swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false
+                }, function () {
+                    $.ajax({
+                        url: "/MasterBooks/Delete/" + id,
+                        type: "POST",
+                        success: function (response) {
+                            swal({
+                                title: "Deleted!",
+                                text: "That data has been delete!",
+                                type: "success"
+                            },
+                            function () {
+                                window.location.href = '/MasterBooks/Index/';
+                            });
+                        },
+                        error: function (response) {
+                            swal("Oops", "We couldn't connect to the server!", "error");
+                        }
+                    });
+                });
+            }
+        </script>
+    }

@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "preview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>preview</h2>
+
+<a class="word" href="//docs.google.com/gview?url=http://www.picssel.com/demos/downloads/Fancybox.doc&embedded=true">Open a Word document in Fancybox</a>
+@*<iframe src="@ViewBag.Url"></iframe>*@
+<iframe src="http://localhost:34844/Dataupload/a.pdf" width="100%" height="500px"></iframe>
+<iframe src="https://docs.google.com/viewerng/viewer?url=http://localhost:34844/Dataupload/a.docx&amp;embedded=true" width="100%" height="500px"></iframe>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $(".word").fancybox({
+                'width': 600,
+                'height': 320,
+                'type': 'iframe'
+            });
+        });
+    </script>
+}

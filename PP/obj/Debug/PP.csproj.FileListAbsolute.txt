@@ -1,0 +1,158 @@
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\csc.exe
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\System.Collections.Immutable.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\System.Reflection.Metadata.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\vbc.exe
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\VBCSCompiler.exe
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\roslyn\VBCSCompiler.exe.config
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\PP.dll.config
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\PP.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\PP.pdb
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Antlr3.Runtime.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\EntityFramework.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\EntityFramework.SqlServer.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.AspNet.Identity.Core.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.Cookies.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.Facebook.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.Google.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.OAuth.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.Twitter.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Web.Infrastructure.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Newtonsoft.Json.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Owin.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.Helpers.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.Mvc.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.Optimization.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.Razor.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.WebPages.Deployment.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.WebPages.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.WebPages.Razor.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\WebGrease.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.Helpers.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.Mvc.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.Optimization.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.Razor.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.WebPages.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.WebPages.Deployment.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\System.Web.WebPages.Razor.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Antlr3.Runtime.pdb
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Newtonsoft.Json.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\EntityFramework.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\EntityFramework.SqlServer.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.AspNet.Identity.Core.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.Facebook.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.Cookies.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.OAuth.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.Google.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.Twitter.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\obj\Debug\PP.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\obj\Debug\PP.pdb
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\SautinSoft.RtfToHtml.dll
+C:\project_BNI\ASPNET\Panji\PP\PP\bin\SautinSoft.RtfToHtml.xml
+C:\project_BNI\ASPNET\Panji\PP\PP\obj\Debug\PP.Migrations.fix1untuksubbabbabdanbuku.resources
+C:\project_BNI\ASPNET\Panji\PP\PP\obj\Debug\PP.csproj.GenerateResource.Cache
+C:\project_BNI\ASPNET\Panji\PP\PP\obj\Debug\PP.csprojResolveAssemblyReference.cache
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\csc.exe
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\System.Collections.Immutable.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\System.Reflection.Metadata.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\vbc.exe
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\VBCSCompiler.exe
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\roslyn\VBCSCompiler.exe.config
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\PP.dll.config
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\PP.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\PP.pdb
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Antlr3.Runtime.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\EntityFramework.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\EntityFramework.SqlServer.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.AspNet.Identity.Core.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.Cookies.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.Facebook.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.Google.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.OAuth.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.Twitter.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Web.Infrastructure.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Newtonsoft.Json.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Owin.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\SautinSoft.RtfToHtml.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.Helpers.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.Mvc.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.Optimization.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.Razor.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.WebPages.Deployment.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.WebPages.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.WebPages.Razor.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\WebGrease.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\SautinSoft.RtfToHtml.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.Helpers.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.Mvc.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.Optimization.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.Razor.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.WebPages.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.WebPages.Deployment.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\System.Web.WebPages.Razor.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Antlr3.Runtime.pdb
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Newtonsoft.Json.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\EntityFramework.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\EntityFramework.SqlServer.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.AspNet.Identity.Core.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.Facebook.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.Cookies.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.OAuth.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.Google.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.Twitter.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.csprojResolveAssemblyReference.cache
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.dll
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.pdb
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.user1.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.csproj.GenerateResource.Cache
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.mastersubsubbabstatusApproved.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.haha.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.fix11.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.fix12.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.test.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.fixbaca.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.fixtanggal.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.fix15.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.fix17.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.hsha.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.koka.resources
+C:\project_BNI\ASPNET\Panji\Backup PP\08-01-2020\PP\PP\obj\Debug\PP.Migrations.lallk.resources

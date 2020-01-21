@@ -1,0 +1,96 @@
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using PP.Models;
+
+
+@{
+    ApplicationDbContext _context = new ApplicationDbContext();
+    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
+    var currentUser = manager.FindById(User.Identity.GetUserId());
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Aplikasi Peraturan Perusahaan", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav">
+                @if (User.IsInRole("Asisten") || User.IsInRole("Pimkel") || User.IsInRole("Pengelola"))
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usulan <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            @if (User.IsInRole("Asisten") || User.IsInRole("Pengelola"))
+                            {
+                                <li>@Html.ActionLink("Master Buku", "Index", "MasterBooks")</li>
+                                <li>@Html.ActionLink("Master Bab", "Index", "MasterBabs")</li>
+                                <li>@Html.ActionLink("Master Sub Bab", "Index", "MasterSubBabs")</li>
+                                <li>@Html.ActionLink("Master Sub Sub Bab", "Index", "MasterSubSubBabs")</li>
+                            }
+                            @if (User.IsInRole("Pimkel"))
+                            {
+                                <li>@Html.ActionLink("Master Buku", "Index", "MasterBooks")</li>
+                                <li>@Html.ActionLink("Master Bab", "Index", "MasterBabs")</li>
+                                <li>@Html.ActionLink("Master Sub Bab", "Index", "MasterSubBabs")</li>
+                                <li>@Html.ActionLink("Master Sub Sub Bab", "Index", "MasterSubSubBabs")</li>
+                            }
+                        </ul>
+                    </li>
+                }
+                @if (User.IsInRole("Analis"))
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Master Data Client<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Master Buku", "Index", "MasterBooks")</li>
+                            <li>@Html.ActionLink("Master Bab", "Index", "MasterBabs")</li>
+                            <li>@Html.ActionLink("Master Sub Bab", "Index", "MasterSubBabs")</li>
+                            <li>@Html.ActionLink("Master Sub Sub Bab", "Index", "MasterSubSubBabs")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Master Data SuperAdmin <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Master Buku", "Index", "MasterBooks")</li>
+                            <li>@Html.ActionLink("Master Bab", "Index", "MasterBabs")</li>
+                            <li>@Html.ActionLink("Master Sub Bab", "Index", "MasterSubBabs")</li>
+                            <li>@Html.ActionLink("Master Sub Sub Bab", "Index", "MasterSubSubBabs")</li>
+                        </ul>
+                    </li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Master <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Master Buku", "Index", "MasterBooks")</li>
+                            <li>@Html.ActionLink("Master Bab", "Index", "MasterBabs")</li>
+                            <li>@Html.ActionLink("Master Sub Bab", "Index", "MasterSubBabs")</li>
+                            <li>@Html.ActionLink("Master Sub Sub Bab", "Index", "MasterSubSubBabs")</li>
+                        </ul>
+                    </li>
+                }
+                @if (User.IsInRole("Pimkel") && currentUser.Kelompok == "PNJ")
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usulan Unit<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Master Buku", "Index", "MasterBooks")</li>
+                            <li>@Html.ActionLink("Master Bab", "Index", "MasterBabs")</li>
+                            <li>@Html.ActionLink("Master Sub Bab", "Index", "MasterSubBabs")</li>
+                            <li>@Html.ActionLink("Master Sub Sub Bab", "Index", "MasterSubSubBabs")</li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>

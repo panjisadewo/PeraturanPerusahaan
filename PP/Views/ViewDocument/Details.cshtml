@@ -1,0 +1,21 @@
+﻿@model IEnumerable<PP.ViewModels.DashboardVM>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@foreach (var buku in Model)
+{
+    <center><h1>@buku.NamaBuku</h1></center>
+    foreach (var bab in buku.bab)
+    {
+        <h4><a href="~/Dataupload/a.docx">@bab.NamaBab</a></h4>
+        foreach (var subbab in bab.subbab)
+        {
+            <h5><a href="~/Dataupload/a.docx">@Html.Raw("&nbsp")@Html.Raw("&nbsp")@Html.Raw("&nbsp")@Html.Raw("&nbsp")@subbab.NamaSubBab</a></h5>
+            foreach (var subsubbab in subbab.subsubbab)
+            {
+                <h6>@Html.Raw("&nbsp")@Html.Raw("&nbsp")@Html.Raw("&nbsp")@Html.Raw("&nbsp")@Html.Raw("&nbsp")@Html.Raw("&nbsp")@Html.Raw("&nbsp")@Html.Raw("&nbsp")@subsubbab.NamaSubSubBab</h6>
+            }
+        }
+    }
+}

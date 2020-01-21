@@ -1,0 +1,115 @@
+﻿@model PP.Models.Master.MasterSubBab
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MasterSubBab</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bab.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bab.Nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Urutan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Urutan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jadwal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jadwal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoInstruksi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoInstruksi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TanggalBerlaku)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TanggalBerlaku)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TanggalJatuhTempo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TanggalJatuhTempo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeLine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeLine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusProposal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusProposal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

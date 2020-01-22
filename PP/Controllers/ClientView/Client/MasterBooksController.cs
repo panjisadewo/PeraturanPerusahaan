@@ -135,6 +135,14 @@ namespace PP.Controllers.ViewClient.Client
 
         }
 
+        public JsonResult GetDetailPilihan()
+        {
+            var result = db.MasterAktivitas.ToList();
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
         public JsonResult GetByNamaId(long? id)
         {
             var userStore = new UserStore<ApplicationUser>(db);

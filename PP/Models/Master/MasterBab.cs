@@ -15,8 +15,6 @@ namespace PP.Models.Master
         public Nullable<Int64> BookId { get; set; }
         public MasterKelompok Kelompok { get; set; }
         public Nullable<Int64> KelompokId { get; set; }
-        public string KomenProgress { get; set; }
-        public string KomenTarget { get; set; }
         public string Dokuments { get; set; }
     }
 }

@@ -40,7 +40,21 @@ namespace PP.Controllers.ViewClient.Client
             }
             else
             {
-                var masterBab = db.MasterBab.Include(m => m.Book).Where(x => x.Kelompok.Nama == kelompok).ToList();
+                var masterBab = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)
+                                 join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId into klmpk
+                                 from klmpr in klmpk
+                                 select new BabBabVM
+                                 {
+                                     Id = klmpr.Id,
+                                     NamaKelompok = kelompoks.Nama,
+                                     Nama = klmpr.Nama,
+                                     NoInstruksi = klmpr.NoInstruksi,
+                                     TanggalBerlaku = klmpr.TanggalBerlaku,
+                                     TanggalJatuhTempo = klmpr.TanggalJatuhTempo,
+                                     TimeLine = klmpr.TimeLine,
+                                     StatusProposal = klmpr.StatusProposal,
+                                     Baca = klmpr.Baca
+                                 }).ToList();
                 return Json(masterBab, JsonRequestBehavior.AllowGet);
             }
         }
@@ -133,7 +147,22 @@ namespace PP.Controllers.ViewClient.Client
             var user = userManager.FindById(userId);
 
             var kelompok = user.Kelompok;
-            var result = db.MasterBab.SingleOrDefault(x => x.Id == id && x.Kelompok.Nama == kelompok);
+            var result = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)
+                          join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId into klmpk
+                          from klmpr in klmpk
+                          select new BabBabVM
+                          {
+                              Id = klmpr.Id,
+                              NamaKelompok = kelompoks.Nama,
+                              Nama = klmpr.Nama,
+                              NoInstruksi = klmpr.NoInstruksi,
+                              TanggalBerlaku = klmpr.TanggalBerlaku,
+                              TanggalJatuhTempo = klmpr.TanggalJatuhTempo,
+                              TimeLine = klmpr.TimeLine,
+                              StatusProposal = klmpr.StatusProposal,
+                              Urutan = klmpr.Urutan,
+                              Baca = klmpr.Baca
+                          }).SingleOrDefault(x => x.Id == id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

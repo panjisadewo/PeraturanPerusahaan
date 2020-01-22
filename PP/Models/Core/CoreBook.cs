@@ -18,9 +18,15 @@ namespace PP.Models.Core
         public DateTime TanggalBerlaku { get; set; }
         public DateTime TanggalJatuhTempo { get; set; }
         public DateTime TimeLine { get; set; }
+        public string StatusProposal { get; set; }
         public Int64 Pencapaian { get; set; }
         public Int64 Target { get; set; }
-        public string StatusProposal { get; set; }
+        public string KomenProgress { get; set; }
+        public string KomenTarget { get; set; }
+        public string RejectKomenProgress { get; set; }
+        public string RejectKomenTarget { get; set; }
+        public string ApproveKomenProgress { get; set; }
+        public string ApproveKomenTarget { get; set; }
         public string Baca { get; set; }
     }
 }

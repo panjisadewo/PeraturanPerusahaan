@@ -42,19 +42,23 @@ namespace PP.Controllers.ViewClient.Client
             {
                 var mastersubbab = (from kelompoks in db.MasterKelompok.Where(x=>x.Nama == kelompok)
                                     join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId
-                                    join subbab in db.MasterSubBab on bab.Id equals subbab.BabId into klmpk
+                                    join subbab in db.MasterSubBab on bab.Id equals subbab.BabId
+                                    join aktivis in db.MasterAktivitas on subbab.Pencapaian equals aktivis.Id into klmpk
                                     from klmpr in klmpk.DefaultIfEmpty()
                                     select new SubBabSubBabVM
                                     {
-                                        Id = klmpr.Id,
+                                        Id = subbab.Id,
                                         NamaKelompok = kelompoks.Nama,
-                                        Nama = klmpr.Nama,
-                                        NoInstruksi = klmpr.NoInstruksi,
-                                        TanggalBerlaku = klmpr.TanggalBerlaku,
-                                        TanggalJatuhTempo = klmpr.TanggalJatuhTempo,
-                                        TimeLine = klmpr.TimeLine,
-                                        StatusProposal = klmpr.StatusProposal,
-                                        Baca = klmpr.Baca
+                                        Nama = subbab.Nama,
+                                        NoInstruksi = subbab.NoInstruksi,
+                                        TanggalBerlaku = subbab.TanggalBerlaku,
+                                        TanggalJatuhTempo = subbab.TanggalJatuhTempo,
+                                        TimeLine = subbab.TimeLine,
+                                        StatusProposal = subbab.StatusProposal,
+                                        Baca = subbab.Baca,
+                                        Pencapaian = klmpr.Percent,
+                                        NamaPencapaian = klmpr.Nama
+                                        //Target = 
                                     }).ToList();
                 return Json(mastersubbab, JsonRequestBehavior.AllowGet);
             }
@@ -130,6 +134,7 @@ namespace PP.Controllers.ViewClient.Client
             {
                 tanggalJatuhTempo = Convert.ToDateTime(masterBab.TanggalBerlaku);
                 masterBab.TanggalJatuhTempo = tanggalJatuhTempo.AddYears(1);
+                masterBab.TimeLine = masterBab.TanggalJatuhTempo.AddDays(68);
             }
 
             DateTime? akak = masterBab.TanggalJatuhTempo;

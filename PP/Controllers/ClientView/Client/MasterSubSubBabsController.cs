@@ -98,6 +98,7 @@ namespace PP.Controllers.ClientView.Client
                                         Nama = klmpr.Nama,
                                         NoInstruksi = klmpr.NoInstruksi,
                                         TanggalBerlaku = klmpr.TanggalBerlaku,
+                                        Urutan = klmpr.Urutan,
                                         TanggalJatuhTempo = klmpr.TanggalJatuhTempo,
                                         TimeLine = klmpr.TimeLine,
                                         StatusProposal = klmpr.StatusProposal,
@@ -117,9 +118,10 @@ namespace PP.Controllers.ClientView.Client
             var kelompok = user.Kelompok;
             var result = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)
                           join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId
-                          join subbab in db.MasterSubBab on bab.Id equals subbab.BabId into klmpk
+                          join subbab in db.MasterSubBab on bab.Id equals subbab.BabId
+                          join subsubbabX in db.MasterSubSubBab on subbab.Id equals subsubbabX.SubBabId into klmpk
                           from klmpr in klmpk
-                          select new SubBabSubBabVM
+                          select new MasterSubSubBabVM
                           {
                               Id = klmpr.Id,
                               NamaKelompok = kelompoks.Nama,
@@ -128,12 +130,12 @@ namespace PP.Controllers.ClientView.Client
                               TanggalBerlaku = klmpr.TanggalBerlaku,
                               TanggalJatuhTempo = klmpr.TanggalJatuhTempo,
                               TimeLine = klmpr.TimeLine,
+                              Urutan = klmpr.Urutan,
                               StatusProposal = klmpr.StatusProposal,
-                              Baca = klmpr.Baca,
-                              Urutan = klmpr.Urutan
+                              Baca = klmpr.Baca
                           }).SingleOrDefault(x => x.Id == id);
 
-            var update = db.MasterSubBab.Single(m => m.Id == id);
+            var update = db.MasterSubSubBab.Single(m => m.Id == id);
             update.Id = Convert.ToInt64(id);
             update.Baca = "1";
             db.Entry(update).State = System.Data.Entity.EntityState.Modified;
@@ -151,9 +153,10 @@ namespace PP.Controllers.ClientView.Client
             var kelompok = user.Kelompok;
             var result = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)
                           join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId
-                          join subbab in db.MasterSubBab.Where(x => x.Id == id) on bab.Id equals subbab.BabId into klmpk
-                          from klmpr in klmpk.DefaultIfEmpty()
-                          select new SubBabSubBabVM
+                          join subbab in db.MasterSubBab on bab.Id equals subbab.BabId
+                          join subsubbabX in db.MasterSubSubBab on subbab.Id equals subsubbabX.SubBabId into klmpk
+                          from klmpr in klmpk
+                          select new MasterSubSubBabVM
                           {
                               Id = klmpr.Id,
                               NamaKelompok = kelompoks.Nama,
@@ -162,14 +165,14 @@ namespace PP.Controllers.ClientView.Client
                               TanggalBerlaku = klmpr.TanggalBerlaku,
                               TanggalJatuhTempo = klmpr.TanggalJatuhTempo,
                               TimeLine = klmpr.TimeLine,
-                              StatusProposal = klmpr.StatusProposal,
                               Urutan = klmpr.Urutan,
+                              StatusProposal = klmpr.StatusProposal,
                               Baca = klmpr.Baca
                           }).SingleOrDefault(x => x.Id == id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Save(MasterSubBab masterBab)
+        public ActionResult Save(MasterSubSubBab masterBab)
         {
             DateTime tanggalJatuhTempo;
 
@@ -183,15 +186,15 @@ namespace PP.Controllers.ClientView.Client
 
             if (masterBab.Id == 0)
             {
-                db.MasterSubBab.Add(masterBab);
+                db.MasterSubSubBab.Add(masterBab);
                 var balik = db.SaveChanges();
                 return Json(balik, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                var masterbabDB = db.MasterSubBab.Single(m => m.Id == masterBab.Id);
+                var masterbabDB = db.MasterSubSubBab.Single(m => m.Id == masterBab.Id);
                 masterbabDB.Urutan = masterBab.Urutan;
-                masterbabDB.BabId = masterBab.BabId;
+                masterbabDB.SubBabId = masterBab.SubBabId;
                 masterbabDB.Id = masterBab.Id;
                 masterbabDB.TimeLine = masterBab.TimeLine;
                 masterbabDB.NoInstruksi = masterBab.NoInstruksi;
@@ -207,8 +210,8 @@ namespace PP.Controllers.ClientView.Client
 
         public ActionResult Delete(long? id)
         {
-            MasterSubBab masterBab = db.MasterSubBab.Find(id);
-            db.MasterSubBab.Remove(masterBab);
+            MasterSubSubBab masterBab = db.MasterSubSubBab.Find(id);
+            db.MasterSubSubBab.Remove(masterBab);
             var response = db.SaveChanges();
             return Json(response, JsonRequestBehavior.AllowGet);
         }

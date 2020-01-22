@@ -249,6 +249,18 @@
     <Compile Include="Migrations\202001210404581_lallk.Designer.cs">
       <DependentUpon>202001210404581_lallk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001220453419_kqlk.cs" />
+    <Compile Include="Migrations\202001220453419_kqlk.Designer.cs">
+      <DependentUpon>202001220453419_kqlk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001220636173_qwue.cs" />
+    <Compile Include="Migrations\202001220636173_qwue.Designer.cs">
+      <DependentUpon>202001220636173_qwue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001220638450_q2ioj.cs" />
+    <Compile Include="Migrations\202001220638450_q2ioj.Designer.cs">
+      <DependentUpon>202001220638450_q2ioj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Core\CoreBook.cs" />
@@ -257,6 +269,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Master\LogUser.cs" />
     <Compile Include="Models\Master\MasterAcuanUpdateting.cs" />
+    <Compile Include="Models\Master\MasterAktivitas.cs" />
     <Compile Include="Models\Master\MasterBab.cs" />
     <Compile Include="Models\Master\MasterBook.cs" />
     <Compile Include="Models\Master\MasterDasarUpdateting.cs" />
@@ -445,6 +458,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001210404581_lallk.resx">
       <DependentUpon>202001210404581_lallk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001220453419_kqlk.resx">
+      <DependentUpon>202001220453419_kqlk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001220636173_qwue.resx">
+      <DependentUpon>202001220636173_qwue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001220638450_q2ioj.resx">
+      <DependentUpon>202001220638450_q2ioj.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,7 +13,7 @@
 </p>
 <br />
 <br />
-<table id="example1" class="table table-bordered table-responsive table-striped">
+<table id="example1" class="table table-bordered table-striped">
     <thead>
         <tr>
             <td rowspan="2">No.</td>
@@ -73,13 +73,12 @@
                                 <input type="number" name="NoUrutan" id="NoUrutan" class="form-control" style="border-color:black" />
                             </div>
                             <div class="form-group">
-                                <label>TimeLine</label>
-                                @Html.ValidationMessageFor(model => model.TimeLine, "", new { @class = "text-danger" })
-                                <input type="datetime-local" name="TimeLine" id="TimeLine" class="form-control" style="border-color:black" required />
-                            </div>
-                            <div class="form-group">
                                 <label>No Instruksi</label>
                                 <input type="text" name="NoInstruksi" id="NoInstruksi" class="form-control" style="border-color:black" />
+                            </div>
+                            <div class="form-group">
+                                <label>Detail</label>
+                                <select id="Detail" name="Detail" class="form-control" style="border-color:black; width:100%"></select>
                             </div>
                         </div>
                     </form>
@@ -158,6 +157,7 @@
             $(document).ready(function () {
                 LoadIndexBabs();
                 LoadBookId();
+                LoadDetailId();
                 $('#example1').DataTable({
                     "ajax": LoadIndexBabs(),
                     "scrollX": true,
@@ -182,13 +182,9 @@
                             html += '<td>' + formatDate(val.TimeLine) + '</td>';
                             html += '<td>' + val.Id + '</td>';
                             html += '<td>' + val.Id + '</td>';
-                            if (val.Id == null) {
-                                html += '<td> - </td>';
-                            } else {
-                                html += '<td>' + val.Id + '</td>';
-                            }
+                            html += '<td>' + val.Id +'</td>';
+                            html += '<td>' + val.Id + '</td>';
 
-                            html += '<td>' + formatDate(val.TanggalBerlaku) + '</td>';
                             html += '<td>' + val.StatusProposal + '</td>';
 
                             html += '<td><div class="btn-group-vertical"> <a href="#" class="btn btn-warning" onclick="return AmbilId(' + val.Id + ')">Edit</a>';
@@ -224,6 +220,10 @@
                 ;
             }
 
+            function autoMachine(chosen) {
+                console.log(chosen);
+            }
+
             function LoadBookId() {
                 $.ajax({
                     type: "GET",
@@ -241,6 +241,23 @@
                 })
             }
 
+            function LoadDetailId() {
+                $.ajax({
+                    type: "GET",
+                    url: "/MasterBooks/GetDetailPilihan",
+                    async: false,
+                    dataType: "JSON",
+                    success: function (data) {
+                        var html = '';
+                        var i = 1;
+                        $.each(data, function (index, val) {
+                            html += '<option value="' + val.Id + '">' + val.Nama + '</option>';
+                        });
+                        $('#Detail').html(html);
+                    }
+                })
+            }
+
             function AmbilId(id) {
                 $.ajax({
                     url: "/MasterSubBabs/GetById/"+id,
@@ -253,7 +270,6 @@
                         $('#TanggalBerlaku').val(result.TanggalBerlaku);
                         $('#StatusProposal').val(result.StatusProposal);
                         $('#NoUrutan').val(result.Urutan);
-                        $('#TimeLine').val(result.TimeLine);
                         $('#NoInstruksi').val(result.NoInstruksi);
 
                         $('#myModalinput').modal('show');
@@ -313,15 +329,13 @@
                 Data.BabId = $('#IdBuku').val();
                 Data.StatusProposal = $('#StatusProposal').val();
                 Data.TanggalBerlaku = $('#TanggalBerlaku').val();
-                Data.TimeLine = $('#TimeLine').val();
                 Data.NoInstruksi = $('#NoInstruksi').val();
                 Data.KelompokId = $('#IdKelompok').val();
+                Data.Pencapaian = $('#Detail').val();
                 Data.Nama = $('#NamaBab').val();
                 Data.Urutan = $('#NoUrutan').val();
 
-                console.log($('#IdBuku').val());
-
-                if (Data.TanggalBerlaku == "" || Data.TimeLine == "") {
+                if (Data.TanggalBerlaku == "") {
                     swal("Oops", "Mohon diisi Tanggal Berlaku dan Timeline", "error");
                 } else {
                     $.ajax({

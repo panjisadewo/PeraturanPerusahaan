@@ -18,6 +18,7 @@ namespace PP.ViewModels
         public DateTime? TanggalJatuhTempo { get; set; }
         public string StatusProposal { get; set; }
         public string NoInstruksi { get; set; }
+        public string Baca { get; set; }
         public int countBab { get; set; }
     }
 }

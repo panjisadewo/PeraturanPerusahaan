@@ -46,6 +46,7 @@ namespace PP.Models
         public DbSet<MasterSubSubBabProcedur> MasterSubSubBabProcedur { get; set; }
         public DbSet<MasterSubBabProcedur> MasterSubBabProcedur { get; set; }
         public DbSet<LogUser> LogUser { get; set; }
+        public DbSet<MasterAktivitas> MasterAktivitas { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

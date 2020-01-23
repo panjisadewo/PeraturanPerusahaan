@@ -1,0 +1,25 @@
+.table1 {
+    font-family: sans-serif;
+    color: #232323;
+    border-collapse: collapse;
+}
+ 
+.table1, .th_table, .td_table {
+    border: 1px solid #999;
+    padding: 8px 20px;
+}
+
+.custom-counter {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .custom-counter li {
+    counter-increment: step-counter;
+  }
+  
+  .custom-counter li::before {
+    content: counter(step-counter, lower-alpha)")";
+    margin-right: 5px;
+  }

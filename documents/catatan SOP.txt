@@ -1,0 +1,24 @@
+tgl jatuh tempo otomatis satu tahun setelah tanggal berlaku
+timeline merupakan 68 hari dari jatuhh tempo
+detail progress 
+target adalah progress yang berjalan sesuai waktu, 
+yang dihitung cuma hari kerja
+ aktivitas otomatis muncul
+progress :- bila masuk waktu aktivitas, persentase akan di hitung dalam rentang persentase aktifitas yang bersangkutan
+- bila melewati waktu aktifitas, persentase akan berhenti di rentang persentase terbesar dari aktivitas terakhir jika aktivitas belum berubah sampai aktivitas berikutnya berubah.
+status :
+1. a head (biru) : progress > target
+2. on schedule (hijau): progress = target
+3. behind (kuning): progress < target
+4. late (merah): progress > timeline
+
+total timelline 68 hari, persentase = total pengerjaan hari dibagi 68
+timeline merupakan target ada persentase default nya di excel.
+hari yang dihitung adalah hari kerja.
+
+relevan (hijau) = ketika review SOP masih sesuai dengan aktivitas kerja di unit bersangkutan
+jika masih relevan berarti tanggal jatuh tempo nya 2 tahun (bertambah setahun lagi).
+
+buat summary, dan history perubahan. sehingga sewaktu waktu mau di print out masih bisa
+
+progress mulai otomatis saat review.

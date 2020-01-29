@@ -73,6 +73,7 @@ namespace PP.Controllers.ViewClient.Client
 
             if (masterBab.Id == 0)
             {
+                masterBab.Baca = "1";
                 db.MasterBab.Add(masterBab);
                 var balik = db.SaveChanges();
                 return Json(balik, JsonRequestBehavior.AllowGet);

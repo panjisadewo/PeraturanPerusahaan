@@ -198,17 +198,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001230230296_pertama.cs" />
-    <Compile Include="Migrations\202001230230296_pertama.Designer.cs">
-      <DependentUpon>202001230230296_pertama.cs</DependentUpon>
+    <Compile Include="Migrations\202001280423292_kkk.cs" />
+    <Compile Include="Migrations\202001280423292_kkk.Designer.cs">
+      <DependentUpon>202001280423292_kkk.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001240150202_luis.cs" />
-    <Compile Include="Migrations\202001240150202_luis.Designer.cs">
-      <DependentUpon>202001240150202_luis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001240229402_poyo.cs" />
-    <Compile Include="Migrations\202001240229402_poyo.Designer.cs">
-      <DependentUpon>202001240229402_poyo.cs</DependentUpon>
+    <Compile Include="Migrations\202001280639580_huhu.cs" />
+    <Compile Include="Migrations\202001280639580_huhu.Designer.cs">
+      <DependentUpon>202001280639580_huhu.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -259,7 +255,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -370,14 +368,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001230230296_pertama.resx">
-      <DependentUpon>202001230230296_pertama.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001280423292_kkk.resx">
+      <DependentUpon>202001280423292_kkk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001240150202_luis.resx">
-      <DependentUpon>202001240150202_luis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001240229402_poyo.resx">
-      <DependentUpon>202001240229402_poyo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001280639580_huhu.resx">
+      <DependentUpon>202001280639580_huhu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

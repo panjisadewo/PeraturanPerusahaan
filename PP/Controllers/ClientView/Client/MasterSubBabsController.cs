@@ -24,6 +24,21 @@ namespace PP.Controllers.ViewClient.Client
             return View();
         }
 
+        public static double perhitunganHari(DateTime startD, DateTime endD)
+        {
+            double perhitunganAngka = 1 + ((endD - startD).TotalDays * 5 - (startD.DayOfWeek - endD.DayOfWeek) * 2) / 7;
+
+            if (endD.DayOfWeek == DayOfWeek.Saturday) perhitunganAngka--;
+            if (startD.DayOfWeek == DayOfWeek.Sunday) perhitunganAngka--;
+
+            int keAngka = Convert.ToInt16(perhitunganAngka);
+            if (keAngka <= 0) {
+                perhitunganAngka = 1;
+            }
+            perhitunganAngka = keAngka;
+            return perhitunganAngka;
+        }
+
         public ActionResult Ambil_Index()
         {
             var userStore = new UserStore<ApplicationUser>(db);
@@ -32,6 +47,13 @@ namespace PP.Controllers.ViewClient.Client
             var user = userManager.FindById(userId);
 
             var kelompok = user.Kelompok;
+            var masterAktivitas = (from masteraktivitas in db.MasterAktivitas
+                                   select new SubBabSubBabVM
+                                   {
+                                       Hari = masteraktivitas.Hari,
+                                       Target = masteraktivitas.Nama,
+                                       PercentTarget = masteraktivitas.Percent
+                                }).ToList();
 
             if (kelompok == "PPM" || kelompok == "DGM" || kelompok == "GM")
             {
@@ -40,25 +62,57 @@ namespace PP.Controllers.ViewClient.Client
             }
             else
             {
+                var masterSubBabsSaveOtomatis = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)
+                                                 join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId
+                                                 join subbab in db.MasterSubBab on bab.Id equals subbab.BabId into sbab
+                                                 from ssbab in sbab
+                                                 select new SubBabSubBabVM
+                                       {
+                                                     Id = ssbab.Id,
+                                                     TanggalJatuhTempo = ssbab.TanggalJatuhTempo,
+                                                     Pencapaian = ssbab.Pencapaian
+                                       }).ToList();
+
+                int checker = 0;
+
+                foreach (var item in masterSubBabsSaveOtomatis)
+                {
+                    checker = DateTime.Now.CompareTo(item.TanggalJatuhTempo);
+                    if (checker > 0) {
+                        foreach (var item2 in masterAktivitas)
+                        {
+                            double hasilPerhitungan = perhitunganHari(item.TanggalJatuhTempo, DateTime.Now);
+                            if (hasilPerhitungan == Convert.ToDouble(item2.Hari))
+                            {
+                                var masterSubBabsInsert = db.MasterSubBab.Single(m => m.Id == item.Id);
+                                masterSubBabsInsert.Target = item2.Target;
+                                masterSubBabsInsert.PercentTarget = item2.PercentTarget;
+                                db.SaveChanges();
+                                db.Entry(masterSubBabsInsert).State = System.Data.Entity.EntityState.Modified;
+                            }
+                        }
+                    }
+                }
+                
                 var mastersubbab = (from kelompoks in db.MasterKelompok.Where(x=>x.Nama == kelompok)
                                     join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId
-                                    join subbab in db.MasterSubBab on bab.Id equals subbab.BabId
-                                    join aktivis in db.MasterAktivitas on subbab.Pencapaian equals aktivis.Id into klmpk
+                                    join subbab in db.MasterSubBab on bab.Id equals subbab.BabId into klmpk
                                     from klmpr in klmpk.DefaultIfEmpty()
                                     select new SubBabSubBabVM
                                     {
-                                        Id = subbab.Id,
+                                        Id = klmpr.Id,
                                         NamaKelompok = kelompoks.Nama,
-                                        Nama = subbab.Nama,
-                                        NoInstruksi = subbab.NoInstruksi,
-                                        TanggalBerlaku = subbab.TanggalBerlaku,
-                                        TanggalJatuhTempo = subbab.TanggalJatuhTempo,
-                                        TimeLine = subbab.TimeLine,
-                                        StatusProposal = subbab.StatusProposal,
-                                        Baca = subbab.Baca,
-                                        Pencapaian = subbab.Pencapaian,
-                                        Target = subbab.Target,
-                                        PercentTarget = subbab.PercentTarget
+                                        Nama = klmpr.Nama,
+                                        NoInstruksi = klmpr.NoInstruksi,
+                                        TanggalBerlaku = klmpr.TanggalBerlaku,
+                                        TanggalJatuhTempo = klmpr.TanggalJatuhTempo,
+                                        TimeLine = klmpr.TimeLine,
+                                        StatusProposal = klmpr.StatusProposal,
+                                        Baca = klmpr.Baca,
+                                        Pencapaian = klmpr.Pencapaian,
+                                        NamaPencapaian = klmpr.PercentPencapaian,
+                                        Target = klmpr.Target,
+                                        PercentTarget = klmpr.PercentTarget
                                     }).ToList();
                 return Json(mastersubbab, JsonRequestBehavior.AllowGet);
             }
@@ -128,6 +182,11 @@ namespace PP.Controllers.ViewClient.Client
 
         public ActionResult Save(MasterSubBab masterBab)
         {
+            Int64 IdMaster = Convert.ToInt64(masterBab.PercentTarget);
+            var result = (from u in db.MasterAktivitas
+                          where u.Id == IdMaster
+                          select u).SingleOrDefault();
+
             DateTime tanggalJatuhTempo;
 
             if (masterBab.TanggalBerlaku != null)
@@ -141,17 +200,24 @@ namespace PP.Controllers.ViewClient.Client
 
             if (masterBab.Id == 0)
             {
+                //Ini untuk insert baru subbab
+                masterBab.PercentPencapaian = result.Percent;
+                masterBab.Pencapaian = result.Nama;
+                masterBab.Baca = "0";
                 db.MasterSubBab.Add(masterBab);
                 var balik = db.SaveChanges();
                 return Json(balik, JsonRequestBehavior.AllowGet);
             }
             else
             {
+                // Ini untuk update subbab
                 var masterbabDB = db.MasterSubBab.Single(m => m.Id == masterBab.Id);
                 masterbabDB.Urutan = masterBab.Urutan;
                 masterbabDB.BabId = masterBab.BabId;
                 masterbabDB.Id = masterBab.Id;
-                masterbabDB.Pencapaian = masterBab.Pencapaian;
+                masterbabDB.Baca = "0";
+                masterbabDB.Pencapaian = result.Nama;
+                masterbabDB.PercentPencapaian = result.Percent;
                 masterbabDB.TimeLine = masterBab.TimeLine;
                 masterbabDB.NoInstruksi = masterBab.NoInstruksi;
                 masterbabDB.StatusProposal = masterBab.StatusProposal;
@@ -173,7 +239,6 @@ namespace PP.Controllers.ViewClient.Client
             var user = userManager.FindById(userId);
 
             int currentYear = System.DateTime.Today.Year;
-            int countDay;
             int balik = 0;
             var kelompok = user.Kelompok;
             var mastersubBabs = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)

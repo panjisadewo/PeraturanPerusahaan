@@ -1,4 +1,4 @@
-﻿@model PP.Models.Master.MasterSubBab
+﻿@model PP.Models.Master.MasterSubSubBab
 
 @{
     ViewBag.Title = "Master Sub Bab";
@@ -13,7 +13,7 @@
 </p>
 <br />
 <br />
-<table id="example1" class="table table-bordered table-striped">
+<table id="example1" class="table table-bordered">
     <thead>
         <tr>
             <td rowspan="2">No.</td>
@@ -140,7 +140,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" onclick="Accept();">Accept Data</button>
+                <button type="submit" class="btn btn-primary" onclick="Approve();">Accept Data</button>
                 <button type="submit" class="btn btn-primary" onclick="Reject();">Reject Data</button>
                 <button type="submit" class="btn btn-primary" onclick="SubmitData();">Submit Data</button>
                 <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="cancelView();">Cancel</button>
@@ -174,33 +174,31 @@
                     var html = '';
                     var i = 1;
                     $.each(data, function (index, val) {
-                        html += '<tr>';
-                        html += '<td>' + i + '</td>';
-                        html += '<td>' + val.Nama + '</td>';
-                        html += '<td>' + val.NoInstruksi + '</td>';
-                        html += '<td>' + formatDate(val.TanggalBerlaku) + '</td>';
-                        html += '<td>' + formatDate(val.TanggalJatuhTempo) + '</td>';
-                        html += '<td>' + formatDate(val.TimeLine) + '</td>';
-                        html += '<td>' + val.Id + '</td>';
-                        html += '<td>' + val.Id + '</td>';
-                        html += '<td>' + val.Target + '</td>';
-                        html += '<td>' + val.PercentTarget + '</td>';
-
-                        html += '<td>' + val.StatusProposal + '</td>';
-
-                        html += '<td><div class="btn-group-vertical"> <a href="#" class="btn btn-warning" onclick="return AmbilId(' + val.Id + ')">Edit</a>';
-                        html += ' <a href="#" class="btn btn-danger" onclick="return Delete(' + val.Id + ')">Delete</a>';
+                        var bgcolor;
                         if (val.Baca == 1) {
-                            html += ' <a href="#" class="btn btn-secondary" onclick="return lihatId(' + val.Id + ')">View</a>';
-                        }
+                            bgcolor = "#51ff00";
+                        }7
                         if (val.Baca == 0) {
-                            html += ' <a href="#" class="btn btn-info" onclick="return lihatId(' + val.Id + ')">View</a>';
+                            bgcolor = "";
                         }
-                        //html += ' <a style="display:none;" href="#" class="btn btn-info" onclick="return UploadBuku(' + val.Id + ')">Upload</a>';
-                        html += ' <a href="#" class="btn btn-info" onclick="return UploadBuku(' + val.Id + ')">Upload</a>';
-                        html += ' <a href="#" class="btn btn-info" onclick="return Download(' + val.Id + ')">Download</a>';
-                        html += ' <a href="#" class="btn btn-info" onclick="return Relevan(' + val.Id + ')"> Relevan</a></div></td>';
-                        html += '</tr>';
+                        html = '<tr bgcolor="' + bgcolor+'"><td>'
+                            + i + '</td><td>'
+                            + val.Nama + '</td><td>'
+                            + val.NoInstruksi + '</td><td>'
+                            + formatDate(val.TanggalBerlaku) + '</td><td>'
+                            + formatDate(val.TanggalJatuhTempo) + '</td><td>'
+                            + formatDate(val.TimeLine) + '</td><td>'
+                            + val.Pencapaian + '</td><td>'
+                            + val.NamaPencapaian + '</td><td>'
+                            + val.Target + '</td>'
+                            + Target(val.Id) + '<td>'
+                            + val.StatusProposal + '</td><td><div class="btn-group-vertical"> <a href="#" class="btn btn-warning" onclick="return AmbilId('
+                            + val.Id + ')">Edit</a> <a href="#" class="btn btn-danger" onclick="return Delete('
+                            + val.Id + ')">Delete</a> <a href="#" class="btn btn-info" onclick="return lihatId('
+                            + val.Id + ')">View</a> <a href="#" class="btn btn-info" onclick="return UploadBuku('
+                            + val.Id + ')">Upload</a> <a href="#" class="btn btn-info" onclick="return Download('
+                            + val.Id + ')">Download</a> <a href="#" class="btn btn-info" onclick="return Relevan('
+                            + val.Id + ')"> Relevan</a></div></td></tr>';
                         i++;
                     });
                     $('.tbody').html(html);
@@ -243,6 +241,30 @@
             return [year, month, day].join('-');
         }
 
+        function Approve() {
+            var a = $('#IdView').val();
+            console.log(a);
+        }
+
+        function Target(id) {
+            $.ajax({
+                url: "/MasterSubBabs/GetById/" + id,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    if (result.Dokuments) {
+
+                    }
+                    console.log(result.Id);
+                }
+            })
+            id = "WADADADADW";
+            var html = '';
+            return "<td>" + id + "</td>";
+        }
+
+        //Error disini
+
         function LoadBookId() {
             $.ajax({
                 type: "GET",
@@ -259,7 +281,7 @@
                 }
             })
         }
-        
+
         function LoadDetailId() {
             $.ajax({
                 type: "GET",
@@ -289,7 +311,20 @@
                         console.log(workingDaysBetweenDates(formatDate2(val.TanggalJatuhTempo), formatDate1(Date.now())));
                         console.log(formatDate1(Date.now()));
                         console.log(formatDate2(val.TanggalJatuhTempo));
-                        nomor[21].innerHTML = workingDaysBetweenDates(formatDate2(val.TanggalJatuhTempo), formatDate1(Date.now())) / 68 * 100 +"%";
+                        nomor[21].innerHTML = workingDaysBetweenDates(formatDate2(val.TanggalJatuhTempo), formatDate1(Date.now())) / 68 * 100;
+                        var angkaTarget = nomor[21].firstChild.nodeValue;
+                        var angkaRealita = nomor[23].firstChild.nodeValue;
+                        var hasil1 = angkaTarget.replace(/[a-z]/g, "");
+                        var hasilangkaTarget = hasil1.replace(/[/]/g, "");
+                        var hasil2 = angkaRealita.replace(/[a-z]/g, "");
+                        var hasilangkaRealita = hasil2.replace(/[/]/g, "");
+                        if (hasilangkaTarget < hasilangkaRealita) {
+                            nomor[24].innerHTML = "A HEAD";
+                        } else if (hasilangkaTarget == hasilangkaRealita) {
+                            nomor[24].innerHTML = "ON SCHEDULE";
+                        } else if (hasilangkaTarget > hasilangkaRealita) {
+                            nomor[24].innerHTML = "BEHIND";
+                        }
                     })
                 }
             })
@@ -388,7 +423,7 @@
         function Simpan() {
             var Data = new Object();
             Data.Id = $('#Id').val();
-            Data.BabId = $('#IdBuku').val();
+            Data.SubBabId = $('#IdBuku').val();
             Data.StatusProposal = $('#StatusProposal').val();
             Data.TanggalBerlaku = $('#TanggalBerlaku').val();
             Data.NoInstruksi = $('#NoInstruksi').val();
@@ -396,6 +431,7 @@
             Data.Pencapaian = $('#Detail').val();
             Data.Nama = $('#NamaBab').val();
             Data.Urutan = $('#NoUrutan').val();
+            Data.PercentTarget = $('#Detail').val();
 
             if (Data.TanggalBerlaku == "") {
                 swal("Oops", "Mohon diisi Tanggal Berlaku dan Timeline", "error");
@@ -423,7 +459,7 @@
             }
         }
 
-        
+
         let workingDaysBetweenDates = (d0, d1) => {
             var holidays = ['2016-05-03', '2016-05-05', '2016-05-07'];
             var startDate = parseDate(d0);
@@ -433,10 +469,10 @@
                 return 0;
             }
 
-            var millisecondsPerDay = 86400 * 1000; 
-            startDate.setHours(0, 0, 0, 1);  
-            endDate.setHours(23, 59, 59, 999);  
-            var diff = endDate - startDate;  
+            var millisecondsPerDay = 86400 * 1000;
+            startDate.setHours(0, 0, 0, 1);
+            endDate.setHours(23, 59, 59, 999);
+            var diff = endDate - startDate;
             var days = Math.ceil(diff / millisecondsPerDay);
 
             var weeks = Math.floor(days / 7);

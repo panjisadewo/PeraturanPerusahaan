@@ -13,11 +13,11 @@
 </p>
 <br />
 <br />
-<table id="example1" class="table table-bordered table-responsive table-striped">
+<table id="example1" class="table table-bordered table-striped">
     <thead>
         <tr>
             <td rowspan="2">No.</td>
-            <td rowspan="2">JUDUL Sub Sub BAB</td>
+            <td rowspan="2">JUDUL BAB</td>
             <td rowspan="2">No_Instruksi</td>
             <td rowspan="2">Tanggal berlaku</td>
             <td rowspan="2">Tanggal Jatuh Tempo</td>
@@ -60,7 +60,7 @@
                             <div class="form-group">
                                 <label>Tanggal Berlaku</label>
                                 @Html.ValidationMessageFor(model => model.TanggalBerlaku, "", new { @class = "text-danger" })
-                                <input required type="datetime-local" name="TanggalBerlaku" id="TanggalBerlaku" class="form-control" style="border-color:black; width:100%" />
+                                <input required type="date" name="TanggalBerlaku" id="TanggalBerlaku" class="form-control" style="border-color:black; width:100%" />
                             </div>
                             <div class="form-group">
                                 <label>Status Proposal</label>
@@ -73,13 +73,12 @@
                                 <input type="number" name="NoUrutan" id="NoUrutan" class="form-control" style="border-color:black" />
                             </div>
                             <div class="form-group">
-                                <label>TimeLine</label>
-                                @Html.ValidationMessageFor(model => model.TimeLine, "", new { @class = "text-danger" })
-                                <input type="datetime-local" name="TimeLine" id="TimeLine" class="form-control" style="border-color:black" required />
-                            </div>
-                            <div class="form-group">
                                 <label>No Instruksi</label>
                                 <input type="text" name="NoInstruksi" id="NoInstruksi" class="form-control" style="border-color:black" />
+                            </div>
+                            <div class="form-group">
+                                <label>Detail</label>
+                                <select id="Detail" name="Detail" class="form-control" style="border-color:black; width:100%"></select>
                             </div>
                         </div>
                     </form>
@@ -141,7 +140,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" onclick="Accept();">Accept Data</button>
+                <button type="submit" class="btn btn-primary" onclick="Approve();">Accept Data</button>
                 <button type="submit" class="btn btn-primary" onclick="Reject();">Reject Data</button>
                 <button type="submit" class="btn btn-primary" onclick="SubmitData();">Submit Data</button>
                 <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="cancelView();">Cancel</button>
@@ -155,239 +154,386 @@
     <script src="~/Content/sweetalert/sweetalert.min.js"></script>
     <link href="~/Content/sweetalert/sweetalert.css" rel="stylesheet" />
     <script>
-            $(document).ready(function () {
-                LoadIndexBabs();
-                LoadBookId();
-                $('#example1').DataTable({
-                    "ajax": LoadIndexBabs(),
-                    "scrollX": true,
-                });
-            })
-            function LoadIndexBabs() {
-                $.ajax({
-                    type: "GET",
-                    url: "/MasterSubSubBabs/Ambil_Index",
-                    async: false,
-                    dataType: "JSON",
-                    success: function (data) {
-                        var html = '';
-                        var i = 1;
-                        $.each(data, function (index, val) {
-                            html += '<tr>';
-                            html += '<td>' + i + '</td>';
-                            html += '<td> <input type="checkbox" name="id[]" id="' + val.Id + '" class="checkbox"/>' + val.Nama + '</td>';
-                            html += '<td>' + val.NoInstruksi + '</td>';
-                            html += '<td>' + formatDate(val.TanggalBerlaku) + '</td>';
-                            html += '<td>' + formatDate(val.TanggalJatuhTempo) + '</td>';
-                            html += '<td>' + formatDate(val.TimeLine) + '</td>';
-                            html += '<td>' + val.Id + '</td>';
-                            html += '<td>' + val.Id + '</td>';
-                            if (val.Id == null) {
-                                html += '<td> - </td>';
-                            } else {
-                                html += '<td>' + val.Id + '</td>';
-                            }
+        $(document).ready(function () {
+            LoadIndexBabs();
+            LoadBookId();
+            LoadDetailId();
+            $('#example1').DataTable({
+                "ajax": LoadIndexBabs(),
+                "scrollX": true,
+            });
+            UpdateData();
+        })
+        function LoadIndexBabs() {
+            $.ajax({
+                type: "GET",
+                url: "/MasterSubSubBabs/Ambil_Index",
+                async: false,
+                dataType: "JSON",
+                success: function (data) {
+                    var html = '';
+                    var i = 1;
+                    $.each(data, function (index, val) {
+                        html += '<tr>';
+                        html += '<td>' + i + '</td>';
+                        html += '<td>' + val.Nama + '</td>';
+                        html += '<td>' + val.NoInstruksi + '</td>';
+                        html += '<td>' + formatDate(val.TanggalBerlaku) + '</td>';
+                        html += '<td>' + formatDate(val.TanggalJatuhTempo) + '</td>';
+                        html += '<td>' + formatDate(val.TimeLine) + '</td>';
+                        html += '<td>' + val.Pencapaian + '</td>';
+                        html += '<td>' + val.NamaPencapaian + '</td>';
+                        html += '<td>' + val.Target + '</td>';
+                        html += '<td>' + val.PercentTarget + '</td>';
 
-                            html += '<td>' + formatDate(val.TanggalBerlaku) + '</td>';
-                            html += '<td>' + val.StatusProposal + '</td>';
+                        html += '<td>' + val.StatusProposal + '</td>';
 
-                            html += '<td><div class="btn-group-vertical"> <a href="#" class="btn btn-warning" onclick="return AmbilId(' + val.Id + ')">Edit</a>';
-                            html += ' <a href="#" class="btn btn-danger" onclick="return Delete(' + val.Id + ')">Delete</a>';
-                            if(val.Baca == 1)
-                            {
-                                html += ' <a href="#" class="btn btn-secondary" onclick="return lihatId(' + val.Id + ')">View</a>';
-                            }
-                            if(val.Baca == 0)
-                            {
-                                html += ' <a href="#" class="btn btn-info" onclick="return lihatId(' + val.Id + ')">View</a>';
-                            }
-                            //html += ' <a style="display:none;" href="#" class="btn btn-info" onclick="return UploadBuku(' + val.Id + ')">Upload</a>';
-                            html += ' <a href="#" class="btn btn-info" onclick="return UploadBuku(' + val.Id + ')">Upload</a>';
-                            html += ' <a href="#" class="btn btn-info" onclick="return Download(' + val.Id + ')">Download</a>';
-                            html += ' <a href="#" class="btn btn-info" onclick="return Relevan(' + val.Id + ')"> Relevan</a></div></td>';
-                            html += '</tr>';
-                            i++;
-                        });
-                        $('.tbody').html(html);
-                    }
-                })
-            }
-
-            function formatDate(dates) {
-                date = new Date(parseInt(dates.substr(6)));
-                var year = date.getFullYear();
-                var month = (1 + date.getMonth()).toString();
-                month = month.length > 1 ? month : '0' + month;
-                var day = date.getDate().toString();
-                day = day.length > 1 ? day : '0' + day;
-                return day + '/' + month + '/' + year
-                ;
-            }
-
-            function LoadBookId() {
-                $.ajax({
-                    type: "GET",
-                    url: "/MasterSubBabs/Get",
-                    async: false,
-                    dataType: "JSON",
-                    success: function (data) {
-                        var html = '';
-                        var i = 1;
-                        $.each(data, function (index, val) {
-                            html += '<option value="' + val.Id + '">' + val.Nama + '</option>';
-                        });
-                        $('#IdBuku').html(html);
-                    }
-                })
-            }
-
-            function AmbilId(id) {
-                $.ajax({
-                    url: "/MasterSubSubBabs/GetById/" + id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (result) {
-                        $('#Id').val(result.Id);
-                        $('#NamaBab').val(result.Nama);
-                        $('#TanggalBerlaku').val(result.TanggalBerlaku);
-                        $('#StatusProposal').val(result.StatusProposal);
-                        $('#NoUrutan').val(result.Urutan);
-                        $('#TimeLine').val(result.TimeLine);
-                        $('#NoInstruksi').val(result.NoInstruksi);
-
-                        $('#myModalinput').modal('show');
-                        $('#myModalLabelAddData').hide();
-                        $('#myModalLabelUpdateData').show();
-                        $('#Update').show();
-                        $('#Save').hide();
-                    }
-                })
-            }
-
-            function lihatId(id) {
-                $.ajax({
-                    url: "/MasterSubSubBabs/GetByNamaId/" + id,
-                    type: "POST",
-                    dataType: "json",
-                    success: function (result) {
-                        $('#IdView').val(result.Id);
-                        $('#IdBukuView').val(result.Nama);
-                        $('#NamaBabView').val(result.Nama);
-                        $('#TanggalBerlakuView').val(formatDate(result.TanggalBerlaku));
-                        $('#StatusProposalView').val(result.StatusProposal);
-                        $('#NoUrutanView').val(result.Urutan);
-                        $('#TimeLineView').val(formatDate(result.TimeLine));
-                        $('#NoInstruksiView').val(result.NoInstruksi);
-
-                        $('#myModalView').modal('show');
-                    }
-                });
-            }
-
-            function cancelView() {
-                window.location.href = '/MasterSubSubBabs';
-            }
-
-            function ClearScreen() {
-                $('#Id').val("");
-                $('#NamaBab').val("");
-                $('#TanggalBerlaku').val("");
-                $('#StatusProposal').val("");
-                $('#NoUrutan').val("");
-                $('#TimeLine').val("");
-                $('#NoInstruksi').val("");
-            }
-
-            function AddData() {
-                $('#myModalinput').modal('show');
-                $('#myModalLabelAddData').show();
-                $('#myModalLabelUpdateData').hide();
-                $('#Update').hide();
-                $('#Save').show();
-            }
-
-            function Simpan() {
-                var Data = new Object();
-                Data.Id = $('#Id').val();
-                Data.SubBabId = $('#IdBuku').val();
-                Data.Baca = "0";
-                Data.StatusProposal = $('#StatusProposal').val();
-                Data.TanggalBerlaku = $('#TanggalBerlaku').val();
-                Data.TimeLine = $('#TimeLine').val();
-                Data.NoInstruksi = $('#NoInstruksi').val();
-                Data.KelompokId = $('#IdKelompok').val();
-                Data.Nama = $('#NamaBab').val();
-                Data.Urutan = $('#NoUrutan').val();
-
-                if (Data.TanggalBerlaku == "" || Data.TimeLine == "") {
-                    swal("Oops", "Mohon diisi Tanggal Berlaku dan Timeline", "error");
-                } else {
-                    $.ajax({
-                        url: "/MasterSubSubBabs/Save",
-                        type: 'POST',
-                        dataType: 'json',
-                        data: Data,
-                        success: function (balik) {
-                            swal({
-                                title: "Added Successfully!",
-                                text: "That data has been Add!",
-                                type: "success"
-                            },
-                               function () {
-                                   $('#myModalinput').modal('hide');
-                                   window.location.href = '/MasterSubSubBabs';
-                               });
-                        },
-                        error: function (response) {
-                            swal("Oops", "We failed to Added!", "error");
+                        html += '<td><div class="btn-group-vertical"> <a href="#" class="btn btn-warning" onclick="return AmbilId(' + val.Id + ')">Edit</a>';
+                        html += ' <a href="#" class="btn btn-danger" onclick="return Delete(' + val.Id + ')">Delete</a>';
+                        if (val.Baca == 1) {
+                            html += ' <a href="#" class="btn btn-secondary" onclick="return lihatId(' + val.Id + ')">View</a>';
                         }
+                        if (val.Baca == 0) {
+                            html += ' <a href="#" class="btn btn-info" onclick="return lihatId(' + val.Id + ')">View</a>';
+                        }
+                        html += ' <a style="display:none;" href="#" class="btn btn-info" onclick="return UploadBuku(' + val.Id + ')">Upload</a>';
+                        html += ' <a href="#" class="btn btn-info" onclick="return UploadBuku(' + val.Id + ')">Upload</a>';
+                        html += ' <a href="#" class="btn btn-info" onclick="return Download(' + val.Id + ')">Download</a>';
+                        html += ' <a href="#" class="btn btn-info" onclick="return Relevan(' + val.Id + ')"> Relevan</a></div></td>';
+                        html += '</tr>';
+                        i++;
                     });
+                    console.log(html);
+                    $('.tbody').html(html);
                 }
-            }
+            })
+        }
 
-            function UploadBuku(id) {
-                window.location.href = '/MasterSubSubBabs/UploadBukus/' + id;
-            }
+        function formatDate(dates) {
+            date = new Date(parseInt(dates.substr(6)));
+            var year = date.getFullYear();
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            return day + '/' + month + '/' + year
+                ;
+        }
 
-            function Download(id) {
+        function formatDate2(dates) {
+            date = new Date(parseInt(dates.substr(6)));
+            var year = date.getFullYear();
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            return year + '-' + month + '-' + day
+                ;
+        }
+
+        function formatDate1(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+
+        function Approve() {
+            var a = $('#IdView').val();
+            console.log(a);
+        }
+
+        //Error disini
+
+        function LoadBookId() {
+            $.ajax({
+                type: "GET",
+                url: "/MasterSubBabs/Get",
+                async: false,
+                dataType: "JSON",
+                success: function (data) {
+                    var html = '';
+                    var i = 1;
+                    $.each(data, function (index, val) {
+                        html += '<option value="' + val.Id + '">' + val.Nama + '</option>';
+                    });
+                    $('#IdBuku').html(html);
+                }
+            })
+        }
+
+        function LoadDetailId() {
+            $.ajax({
+                type: "GET",
+                url: "/MasterBooks/GetDetailPilihan",
+                async: false,
+                dataType: "JSON",
+                success: function (data) {
+                    var html = '';
+                    var i = 1;
+                    $.each(data, function (index, val) {
+                        html += '<option value="' + val.Id + '">' + val.Nama + '</option>';
+                    });
+                    $('#Detail').html(html);
+                }
+            })
+        }
+
+        function UpdateData() {
+            $.ajax({
+                url: "/MasterSubSubBabs/Ambil_Index",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (index, val) {
+                        var nomor = document.getElementById('example1').getElementsByTagName('td');
+                        console.log(nomor);
+                        console.log(workingDaysBetweenDates(formatDate2(val.TanggalJatuhTempo), formatDate1(Date.now())));
+                        console.log(formatDate1(Date.now()));
+                        console.log(formatDate2(val.TanggalJatuhTempo));
+                        //nomor[21].innerHTML = workingDaysBetweenDates(formatDate2(val.TanggalJatuhTempo), formatDate1(Date.now())) / 68 * 100;
+                        var angkaTarget = nomor[21].firstChild.nodeValue;
+                        var angkaRealita = nomor[23].firstChild.nodeValue;
+                        var hasil1 = angkaTarget.replace(/[a-z]/g, "");
+                        var hasilangkaTarget = hasil1.replace(/[/]/g, "");
+                        var hasil2 = angkaRealita.replace(/[a-z]/g, "");
+                        var hasilangkaRealita = hasil2.replace(/[/]/g, "");
+                        if (hasilangkaTarget < hasilangkaRealita) {
+                            nomor[24].innerHTML = "A HEAD";
+                        } else if (hasilangkaTarget == hasilangkaRealita) {
+                            nomor[24].innerHTML = "ON SCHEDULE";
+                        } else if (hasilangkaTarget > hasilangkaRealita) {
+                            nomor[24].innerHTML = "BEHIND";
+                        }
+                    })
+                }
+            })
+        }
+
+        function convertMiliseconds(miliseconds, format) {
+            var days, hours, minutes, seconds, total_hours, total_minutes, total_seconds;
+
+            total_seconds = parseInt(Math.floor(miliseconds / 1000));
+            total_minutes = parseInt(Math.floor(total_seconds / 60));
+            total_hours = parseInt(Math.floor(total_minutes / 60));
+            days = parseInt(Math.floor(total_hours / 24));
+
+            seconds = parseInt(total_seconds % 60);
+            minutes = parseInt(total_minutes % 60);
+            hours = parseInt(total_hours % 24);
+
+            switch (format) {
+                case 's':
+                    return total_seconds;
+                case 'm':
+                    return total_minutes;
+                case 'h':
+                    return total_hours;
+                case 'd':
+                    return days;
+                default:
+                    return { d: days, h: hours, m: minutes, s: seconds };
+            }
+        };
+
+        function AmbilId(id) {
+            $.ajax({
+                url: "/MasterSubSubBabs/GetById/" + id,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    $('#Id').val(result.Id);
+                    $('#NamaBab').val(result.Nama);
+                    $('#TanggalBerlaku').val(result.TanggalBerlaku);
+                    $('#StatusProposal').val(result.StatusProposal);
+                    $('#NoUrutan').val(result.Urutan);
+                    $('#NoInstruksi').val(result.NoInstruksi);
+
+                    $('#myModalinput').modal('show');
+                    $('#myModalLabelAddData').hide();
+                    $('#myModalLabelUpdateData').show();
+                    $('#Update').show();
+                    $('#Save').hide();
+                }
+            })
+        }
+
+        function lihatId(id) {
+            $.ajax({
+                url: "/MasterSubSubBabs/GetByNamaId/" + id,
+                type: "POST",
+                dataType: "json",
+                success: function (result) {
+                    $('#IdView').val(result.Id);
+                    $('#IdBukuView').val(result.Nama);
+                    $('#NamaBabView').val(result.Nama);
+                    $('#TanggalBerlakuView').val(formatDate(result.TanggalBerlaku));
+                    $('#StatusProposalView').val(result.StatusProposal);
+                    $('#NoUrutanView').val(result.Urutan);
+                    $('#TimeLineView').val(formatDate(result.TimeLine));
+                    $('#NoInstruksiView').val(result.NoInstruksi);
+
+                    $('#myModalView').modal('show');
+                }
+            });
+        }
+
+        function cancelView() {
+            window.location.href = '/MasterSubSubBabs';
+        }
+
+        function ClearScreen() {
+            $('#Id').val("");
+            $('#NamaBab').val("");
+            $('#TanggalBerlaku').val("");
+            $('#StatusProposal').val("");
+            $('#NoUrutan').val("");
+            $('#TimeLine').val("");
+            $('#NoInstruksi').val("");
+        }
+
+        function AddData() {
+            $('#myModalinput').modal('show');
+            $('#myModalLabelAddData').show();
+            $('#myModalLabelUpdateData').hide();
+            $('#Update').hide();
+            $('#Save').show();
+        }
+
+        function Simpan() {
+            var Data = new Object();
+            Data.Id = $('#Id').val();
+            Data.SubBabId = $('#IdBuku').val();
+            Data.StatusProposal = $('#StatusProposal').val();
+            Data.TanggalBerlaku = $('#TanggalBerlaku').val();
+            Data.NoInstruksi = $('#NoInstruksi').val();
+            Data.KelompokId = $('#IdKelompok').val();
+            Data.Pencapaian = $('#Detail').val();
+            Data.Nama = $('#NamaBab').val();
+            Data.Urutan = $('#NoUrutan').val();
+            Data.PercentTarget = $('#Detail').val();
+
+            if (Data.TanggalBerlaku == "") {
+                swal("Oops", "Mohon diisi Tanggal Berlaku dan Timeline", "error");
+            } else {
                 $.ajax({
-                    url: "/MasterSubSubBabs/GetByNamaId/" + id,
+                    url: "/MasterSubSubBabs/Save",
                     type: 'POST',
                     dataType: 'json',
+                    data: Data,
                     success: function (balik) {
-                        window.location.href = '/Dataupload/' + balik.Dokument;
+                        swal({
+                            title: "Added Successfully!",
+                            text: "That data has been Add!",
+                            type: "success"
+                        },
+                            function () {
+                                $('#myModalinput').modal('hide');
+                                window.location.href = '/MasterSubSubBabs';
+                            });
+                    },
+                    error: function (response) {
+                        swal("Oops", "We failed to Added!", "error");
                     }
                 });
             }
+        }
 
-            function Delete(id) {
-                swal({
-                    title: "Are you sure?",
-                    text: "You will not be able to recover this imaginary file!",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Yes, delete it!",
-                    closeOnConfirm: false
-                }, function () {
-                    $.ajax({
-                        url: "/MasterSubSubBabs/Delete/" + id,
-                        type: "POST",
-                        success: function (response) {
-                            swal({
-                                title: "Deleted!",
-                                text: "That data has been delete!",
-                                type: "success"
-                            },
+
+        let workingDaysBetweenDates = (d0, d1) => {
+            var holidays = ['2016-05-03', '2016-05-05', '2016-05-07'];
+            var startDate = parseDate(d0);
+            var endDate = parseDate(d1);
+
+            if (endDate < startDate) {
+                return 0;
+            }
+
+            var millisecondsPerDay = 86400 * 1000;
+            startDate.setHours(0, 0, 0, 1);
+            endDate.setHours(23, 59, 59, 999);
+            var diff = endDate - startDate;
+            var days = Math.ceil(diff / millisecondsPerDay);
+
+            var weeks = Math.floor(days / 7);
+            days -= weeks * 2;
+
+            var startDay = startDate.getDay();
+            var endDay = endDate.getDay();
+
+            if (startDay - endDay > 1) {
+                days -= 2;
+            }
+            if (startDay == 0 && endDay != 6) {
+                days--;
+            }
+            if (endDay == 6 && startDay != 0) {
+                days--;
+            }
+            holidays.forEach(day => {
+                if ((day >= d0) && (day <= d1)) {
+                    if ((parseDate(day).getDay() % 6) != 0) {
+                        days--;
+                    }
+                }
+            });
+            return days;
+        }
+
+        function parseDate(input) {
+            var parts = input.match(/(\d+)/g);
+            return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
+        }
+
+        function UploadBuku(id) {
+            window.location.href = '/MasterSubSubBabs/UploadBukus/' + id;
+        }
+
+        function Download(id) {
+            $.ajax({
+                url: "/MasterBabs/GetByNamaId/" + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (balik) {
+                    window.location.href = '/Dataupload/' + balik.Dokument;
+                }
+            });
+        }
+
+        function Delete(id) {
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url: "/MasterSubSubBabs/Delete/" + id,
+                    type: "POST",
+                    success: function (response) {
+                        swal({
+                            title: "Deleted!",
+                            text: "That data has been delete!",
+                            type: "success"
+                        },
                             function () {
                                 window.location.href = '/MasterSubSubBabs/Index/';
                             });
-                        },
-                        error: function (response) {
-                            swal("Oops", "We couldn't connect to the server!", "error");
-                        }
-                    });
+                    },
+                    error: function (response) {
+                        swal("Oops", "We couldn't connect to the server!", "error");
+                    }
                 });
-            }
+            });
+        }
     </script>
 }

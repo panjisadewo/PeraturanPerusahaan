@@ -3,7 +3,7 @@ namespace PP.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class user1 : DbMigration
+    public partial class kkk : DbMigration
     {
         public override void Up()
         {
@@ -38,14 +38,33 @@ namespace PP.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.LogUsers",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        Aktivitas = c.String(),
+                        TanggalPengerjaan = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.MasterAktivitas",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        Nama = c.String(),
+                        Percent = c.String(),
+                        Hari = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.MasterBabs",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
                         BookId = c.Long(),
                         KelompokId = c.Long(),
-                        KomenProgress = c.String(),
-                        KomenTarget = c.String(),
                         Dokuments = c.String(),
                         Nama = c.String(),
                         Status = c.String(),
@@ -54,12 +73,22 @@ namespace PP.Migrations
                         UpdateDate = c.String(),
                         Jadwal = c.String(),
                         NoInstruksi = c.String(),
-                        TanggalBerlaku = c.DateTime(),
-                        TanggalJatuhTempo = c.DateTime(),
-                        TimeLine = c.DateTime(),
-                        Pencapaian = c.Long(nullable: false),
-                        Target = c.Long(nullable: false),
+                        TanggalBerlaku = c.DateTime(nullable: false),
+                        TanggalJatuhTempo = c.DateTime(nullable: false),
+                        TimeLine = c.DateTime(nullable: false),
                         StatusProposal = c.String(),
+                        Pencapaian = c.Long(nullable: false),
+                        PercentPencapaian = c.String(),
+                        Target = c.String(),
+                        PercentTarget = c.String(),
+                        KomenProgress = c.String(),
+                        KomenTarget = c.String(),
+                        RejectKomenProgress = c.String(),
+                        RejectKomenTarget = c.String(),
+                        ApproveKomenProgress = c.String(),
+                        ApproveKomenTarget = c.String(),
+                        IsApprove = c.String(),
+                        Baca = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.MasterBooks", t => t.BookId)
@@ -80,12 +109,22 @@ namespace PP.Migrations
                         UpdateDate = c.String(),
                         Jadwal = c.String(),
                         NoInstruksi = c.String(),
-                        TanggalBerlaku = c.DateTime(),
-                        TanggalJatuhTempo = c.DateTime(),
-                        TimeLine = c.DateTime(),
-                        Pencapaian = c.Long(nullable: false),
-                        Target = c.Long(nullable: false),
+                        TanggalBerlaku = c.DateTime(nullable: false),
+                        TanggalJatuhTempo = c.DateTime(nullable: false),
+                        TimeLine = c.DateTime(nullable: false),
                         StatusProposal = c.String(),
+                        Pencapaian = c.Long(nullable: false),
+                        PercentPencapaian = c.String(),
+                        Target = c.String(),
+                        PercentTarget = c.String(),
+                        KomenProgress = c.String(),
+                        KomenTarget = c.String(),
+                        RejectKomenProgress = c.String(),
+                        RejectKomenTarget = c.String(),
+                        ApproveKomenProgress = c.String(),
+                        ApproveKomenTarget = c.String(),
+                        IsApprove = c.String(),
+                        Baca = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -112,16 +151,36 @@ namespace PP.Migrations
                         UpdateDate = c.String(),
                         Jadwal = c.String(),
                         NoInstruksi = c.String(),
-                        TanggalBerlaku = c.DateTime(),
-                        TanggalJatuhTempo = c.DateTime(),
-                        TimeLine = c.DateTime(),
-                        Pencapaian = c.Long(nullable: false),
-                        Target = c.Long(nullable: false),
+                        TanggalBerlaku = c.DateTime(nullable: false),
+                        TanggalJatuhTempo = c.DateTime(nullable: false),
+                        TimeLine = c.DateTime(nullable: false),
                         StatusProposal = c.String(),
+                        Pencapaian = c.Long(nullable: false),
+                        PercentPencapaian = c.String(),
+                        Target = c.String(),
+                        PercentTarget = c.String(),
+                        KomenProgress = c.String(),
+                        KomenTarget = c.String(),
+                        RejectKomenProgress = c.String(),
+                        RejectKomenTarget = c.String(),
+                        ApproveKomenProgress = c.String(),
+                        ApproveKomenTarget = c.String(),
+                        IsApprove = c.String(),
+                        Baca = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.MasterBabs", t => t.BabId)
                 .Index(t => t.BabId);
+            
+            CreateTable(
+                "dbo.MasterSubBabProcedurs",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        Nama = c.String(),
+                        IsDelete = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.MasterSubSubBabs",
@@ -130,6 +189,7 @@ namespace PP.Migrations
                         Id = c.Long(nullable: false, identity: true),
                         SubBabId = c.Long(),
                         Dokuments = c.String(),
+                        statusApproved = c.String(),
                         Nama = c.String(),
                         Status = c.String(),
                         Urutan = c.String(),
@@ -137,15 +197,72 @@ namespace PP.Migrations
                         UpdateDate = c.String(),
                         Jadwal = c.String(),
                         NoInstruksi = c.String(),
-                        TanggalBerlaku = c.DateTime(),
-                        TanggalJatuhTempo = c.DateTime(),
-                        TimeLine = c.DateTime(),
-                        Pencapaian = c.Long(nullable: false),
-                        Target = c.Long(nullable: false),
+                        TanggalBerlaku = c.DateTime(nullable: false),
+                        TanggalJatuhTempo = c.DateTime(nullable: false),
+                        TimeLine = c.DateTime(nullable: false),
                         StatusProposal = c.String(),
+                        Pencapaian = c.Long(nullable: false),
+                        PercentPencapaian = c.String(),
+                        Target = c.String(),
+                        PercentTarget = c.String(),
+                        KomenProgress = c.String(),
+                        KomenTarget = c.String(),
+                        RejectKomenProgress = c.String(),
+                        RejectKomenTarget = c.String(),
+                        ApproveKomenProgress = c.String(),
+                        ApproveKomenTarget = c.String(),
+                        IsApprove = c.String(),
+                        Baca = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.MasterSubBabs", t => t.SubBabId)
+                .Index(t => t.SubBabId);
+            
+            CreateTable(
+                "dbo.MasterSubSubBabProcedurs",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        Nama = c.String(),
+                        IsDelete = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.MasterSummaryBabs",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        HasilReview = c.String(),
+                        Updating = c.String(),
+                        DasarUpdating = c.String(),
+                        AcuanUpdating = c.String(),
+                        Sebelum = c.String(),
+                        Sesudah = c.String(),
+                        DasarPenyusunan = c.String(),
+                        BabId = c.Long(),
+                        SubSubBabProcedur = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.MasterBabs", t => t.BabId)
+                .Index(t => t.BabId);
+            
+            CreateTable(
+                "dbo.MasterSummarySubBabs",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        HasilReview = c.String(),
+                        Updating = c.String(),
+                        DasarUpdating = c.String(),
+                        AcuanUpdating = c.String(),
+                        Sebelum = c.String(),
+                        Sesudah = c.String(),
+                        DasarPenyusunan = c.String(),
+                        SubBabId = c.Long(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.MasterBabs", t => t.SubBabId)
                 .Index(t => t.SubBabId);
             
             CreateTable(
@@ -264,6 +381,8 @@ namespace PP.Migrations
             DropForeignKey("dbo.TransactionTugas", "BookId", "dbo.MasterBooks");
             DropForeignKey("dbo.TransactionTugas", "BabId", "dbo.MasterBabs");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.MasterSummarySubBabs", "SubBabId", "dbo.MasterBabs");
+            DropForeignKey("dbo.MasterSummaryBabs", "BabId", "dbo.MasterBabs");
             DropForeignKey("dbo.MasterSubSubBabs", "SubBabId", "dbo.MasterSubBabs");
             DropForeignKey("dbo.MasterSubBabs", "BabId", "dbo.MasterBabs");
             DropForeignKey("dbo.MasterBabs", "KelompokId", "dbo.MasterKelompoks");
@@ -278,6 +397,8 @@ namespace PP.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.MasterSummarySubBabs", new[] { "SubBabId" });
+            DropIndex("dbo.MasterSummaryBabs", new[] { "BabId" });
             DropIndex("dbo.MasterSubSubBabs", new[] { "SubBabId" });
             DropIndex("dbo.MasterSubBabs", new[] { "BabId" });
             DropIndex("dbo.MasterBabs", new[] { "KelompokId" });
@@ -289,11 +410,17 @@ namespace PP.Migrations
             DropTable("dbo.TransactionTugas");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.MasterSummarySubBabs");
+            DropTable("dbo.MasterSummaryBabs");
+            DropTable("dbo.MasterSubSubBabProcedurs");
             DropTable("dbo.MasterSubSubBabs");
+            DropTable("dbo.MasterSubBabProcedurs");
             DropTable("dbo.MasterSubBabs");
             DropTable("dbo.MasterKelompoks");
             DropTable("dbo.MasterBooks");
             DropTable("dbo.MasterBabs");
+            DropTable("dbo.MasterAktivitas");
+            DropTable("dbo.LogUsers");
             DropTable("dbo.MasterHasilReviews");
             DropTable("dbo.MasterDasarUpdatetings");
             DropTable("dbo.MasterAcuanUpdatetings");

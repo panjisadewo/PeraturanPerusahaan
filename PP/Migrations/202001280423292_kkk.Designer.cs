@@ -7,13 +7,13 @@ namespace PP.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class lallk : IMigrationMetadata
+    public sealed partial class kkk : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(lallk));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(kkk));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001210404581_lallk"; }
+            get { return "202001280423292_kkk"; }
         }
         
         string IMigrationMetadata.Source

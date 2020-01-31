@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -197,69 +198,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001130408455_user1.cs" />
-    <Compile Include="Migrations\202001130408455_user1.Designer.cs">
-      <DependentUpon>202001130408455_user1.cs</DependentUpon>
+    <Compile Include="Migrations\202001230230296_pertama.cs" />
+    <Compile Include="Migrations\202001230230296_pertama.Designer.cs">
+      <DependentUpon>202001230230296_pertama.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001140242214_master sub sub bab statusApproved.cs" />
-    <Compile Include="Migrations\202001140242214_master sub sub bab statusApproved.Designer.cs">
-      <DependentUpon>202001140242214_master sub sub bab statusApproved.cs</DependentUpon>
+    <Compile Include="Migrations\202001240150202_luis.cs" />
+    <Compile Include="Migrations\202001240150202_luis.Designer.cs">
+      <DependentUpon>202001240150202_luis.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001150740466_haha.cs" />
-    <Compile Include="Migrations\202001150740466_haha.Designer.cs">
-      <DependentUpon>202001150740466_haha.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001150747142_fix 1.1.cs" />
-    <Compile Include="Migrations\202001150747142_fix 1.1.Designer.cs">
-      <DependentUpon>202001150747142_fix 1.1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001150751019_fix 1.2.cs" />
-    <Compile Include="Migrations\202001150751019_fix 1.2.Designer.cs">
-      <DependentUpon>202001150751019_fix 1.2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001160230546_test.cs" />
-    <Compile Include="Migrations\202001160230546_test.Designer.cs">
-      <DependentUpon>202001160230546_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001170319123_fix baca.cs" />
-    <Compile Include="Migrations\202001170319123_fix baca.Designer.cs">
-      <DependentUpon>202001170319123_fix baca.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001170420546_fix tanggal.cs" />
-    <Compile Include="Migrations\202001170420546_fix tanggal.Designer.cs">
-      <DependentUpon>202001170420546_fix tanggal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001170424002_fix 1.5.cs" />
-    <Compile Include="Migrations\202001170424002_fix 1.5.Designer.cs">
-      <DependentUpon>202001170424002_fix 1.5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001170816302_fix 1.7.cs" />
-    <Compile Include="Migrations\202001170816302_fix 1.7.Designer.cs">
-      <DependentUpon>202001170816302_fix 1.7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001210121592_hsha.cs" />
-    <Compile Include="Migrations\202001210121592_hsha.Designer.cs">
-      <DependentUpon>202001210121592_hsha.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001210157390_koka.cs" />
-    <Compile Include="Migrations\202001210157390_koka.Designer.cs">
-      <DependentUpon>202001210157390_koka.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001210404581_lallk.cs" />
-    <Compile Include="Migrations\202001210404581_lallk.Designer.cs">
-      <DependentUpon>202001210404581_lallk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001220453419_kqlk.cs" />
-    <Compile Include="Migrations\202001220453419_kqlk.Designer.cs">
-      <DependentUpon>202001220453419_kqlk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001220636173_qwue.cs" />
-    <Compile Include="Migrations\202001220636173_qwue.Designer.cs">
-      <DependentUpon>202001220636173_qwue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001220638450_q2ioj.cs" />
-    <Compile Include="Migrations\202001220638450_q2ioj.Designer.cs">
-      <DependentUpon>202001220638450_q2ioj.cs</DependentUpon>
+    <Compile Include="Migrations\202001240229402_poyo.cs" />
+    <Compile Include="Migrations\202001240229402_poyo.Designer.cs">
+      <DependentUpon>202001240229402_poyo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -286,6 +235,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DashboardVM.cs" />
+    <Compile Include="ViewModels\MasterAktivitasVM.cs" />
     <Compile Include="ViewModels\MasterBabsVM.cs" />
     <Compile Include="ViewModels\MasterBooksVM.cs" />
     <Compile Include="ViewModels\MasterSubBabsVM.cs" />
@@ -420,53 +370,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001130408455_user1.resx">
-      <DependentUpon>202001130408455_user1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001230230296_pertama.resx">
+      <DependentUpon>202001230230296_pertama.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001140242214_master sub sub bab statusApproved.resx">
-      <DependentUpon>202001140242214_master sub sub bab statusApproved.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001240150202_luis.resx">
+      <DependentUpon>202001240150202_luis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001150740466_haha.resx">
-      <DependentUpon>202001150740466_haha.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001150747142_fix 1.1.resx">
-      <DependentUpon>202001150747142_fix 1.1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001150751019_fix 1.2.resx">
-      <DependentUpon>202001150751019_fix 1.2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001160230546_test.resx">
-      <DependentUpon>202001160230546_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001170319123_fix baca.resx">
-      <DependentUpon>202001170319123_fix baca.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001170420546_fix tanggal.resx">
-      <DependentUpon>202001170420546_fix tanggal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001170424002_fix 1.5.resx">
-      <DependentUpon>202001170424002_fix 1.5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001170816302_fix 1.7.resx">
-      <DependentUpon>202001170816302_fix 1.7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001210121592_hsha.resx">
-      <DependentUpon>202001210121592_hsha.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001210157390_koka.resx">
-      <DependentUpon>202001210157390_koka.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001210404581_lallk.resx">
-      <DependentUpon>202001210404581_lallk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001220453419_kqlk.resx">
-      <DependentUpon>202001220453419_kqlk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001220636173_qwue.resx">
-      <DependentUpon>202001220636173_qwue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001220638450_q2ioj.resx">
-      <DependentUpon>202001220638450_q2ioj.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001240229402_poyo.resx">
+      <DependentUpon>202001240229402_poyo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

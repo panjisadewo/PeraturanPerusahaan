@@ -17,7 +17,7 @@ namespace PP.Controllers.ViewClient.Client
     public class MasterSubBabsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        
         // GET: MasterSubBabs
         public ActionResult Index()
         {
@@ -56,9 +56,9 @@ namespace PP.Controllers.ViewClient.Client
                                         TimeLine = subbab.TimeLine,
                                         StatusProposal = subbab.StatusProposal,
                                         Baca = subbab.Baca,
-                                        Pencapaian = klmpr.Percent,
-                                        NamaPencapaian = klmpr.Nama
-                                        //Target = 
+                                        Pencapaian = subbab.Pencapaian,
+                                        Target = subbab.Target,
+                                        PercentTarget = subbab.PercentTarget
                                     }).ToList();
                 return Json(mastersubbab, JsonRequestBehavior.AllowGet);
             }
@@ -151,6 +151,7 @@ namespace PP.Controllers.ViewClient.Client
                 masterbabDB.Urutan = masterBab.Urutan;
                 masterbabDB.BabId = masterBab.BabId;
                 masterbabDB.Id = masterBab.Id;
+                masterbabDB.Pencapaian = masterBab.Pencapaian;
                 masterbabDB.TimeLine = masterBab.TimeLine;
                 masterbabDB.NoInstruksi = masterBab.NoInstruksi;
                 masterbabDB.StatusProposal = masterBab.StatusProposal;
@@ -162,6 +163,39 @@ namespace PP.Controllers.ViewClient.Client
                 return Json(balik, JsonRequestBehavior.AllowGet);
             }
         }
+
+
+        public ActionResult Update()
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var userId = User.Identity.GetUserId();
+            var user = userManager.FindById(userId);
+
+            int currentYear = System.DateTime.Today.Year;
+            int countDay;
+            int balik = 0;
+            var kelompok = user.Kelompok;
+            var mastersubBabs = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)
+                                 join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId
+                                 join subbab in db.MasterSubBab on bab.Id equals subbab.BabId into klmpk
+                                 from klmpr in klmpk/*.DefaultIfEmpty()*/
+                                 select new SubBabSubBabVM
+                                 {
+                                     Id = klmpr.Id,
+                                     TanggalJatuhTempo = klmpr.TanggalJatuhTempo
+                                 }).ToList();
+
+            var masterAktivitas = (from masteraktivitas in db.MasterAktivitas
+                                 select new MasterAktivitasVM
+                                 {
+                                     Id = masteraktivitas.Id,
+                                     Hari = masteraktivitas.Hari
+                                 }).ToList();
+            return Json(balik, JsonRequestBehavior.AllowGet);
+        }
+
+        
 
         public ActionResult Delete(long? id)
         {

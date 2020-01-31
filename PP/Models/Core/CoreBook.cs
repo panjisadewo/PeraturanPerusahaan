@@ -20,7 +20,8 @@ namespace PP.Models.Core
         public DateTime TimeLine { get; set; }
         public string StatusProposal { get; set; }
         public Int64 Pencapaian { get; set; }
-        public Int64 Target { get; set; }
+        public string Target { get; set; }
+        public string PercentTarget { get; set; }
         public string KomenProgress { get; set; }
         public string KomenTarget { get; set; }
         public string RejectKomenProgress { get; set; }

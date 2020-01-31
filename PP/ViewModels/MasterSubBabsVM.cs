@@ -17,10 +17,11 @@ namespace PP.ViewModels
         public string StatusProposal { get; set; }
         public string Urutan { get; set; }
         public string Baca { get; set; }
-        public string Pencapaian { get; set; }
+        public Int64 Pencapaian { get; set; }
         public string NamaPencapaian { get; set; }
         public string Target { get; set; }
+        public string PercentTarget { get; set; }
         public string NamaTarget { get; set; }
-
+        public int CountDay { get; set; }
     }
 }

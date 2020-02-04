@@ -162,8 +162,8 @@
                 "ajax": LoadIndexBabs(),
                 "scrollX": true,
             });
-            UpdateData();
-        })
+        });
+
         function LoadIndexBabs() {
             $.ajax({
                 type: "GET",
@@ -203,7 +203,6 @@
                         html += '</tr>';
                         i++;
                     });
-                    console.log(html);
                     $('.tbody').html(html);
                 }
             })
@@ -220,37 +219,11 @@
                 ;
         }
 
-        function formatDate2(dates) {
-            date = new Date(parseInt(dates.substr(6)));
-            var year = date.getFullYear();
-            var month = (1 + date.getMonth()).toString();
-            month = month.length > 1 ? month : '0' + month;
-            var day = date.getDate().toString();
-            day = day.length > 1 ? day : '0' + day;
-            return year + '-' + month + '-' + day
-                ;
-        }
-
-        function formatDate1(date) {
-            var d = new Date(date),
-                month = '' + (d.getMonth() + 1),
-                day = '' + d.getDate(),
-                year = d.getFullYear();
-            if (month.length < 2)
-                month = '0' + month;
-            if (day.length < 2)
-                day = '0' + day;
-
-            return [year, month, day].join('-');
-        }
-
         function Approve() {
             var a = $('#IdView').val();
             console.log(a);
         }
-
-        //Error disini
-
+        
         function LoadBookId() {
             $.ajax({
                 type: "GET",
@@ -284,64 +257,7 @@
                 }
             })
         }
-
-        function UpdateData() {
-            $.ajax({
-                url: "/MasterSubSubBabs/Ambil_Index",
-                type: "GET",
-                dataType: "json",
-                success: function (data) {
-                    $.each(data, function (index, val) {
-                        var nomor = document.getElementById('example1').getElementsByTagName('td');
-                        console.log(nomor);
-                        console.log(workingDaysBetweenDates(formatDate2(val.TanggalJatuhTempo), formatDate1(Date.now())));
-                        console.log(formatDate1(Date.now()));
-                        console.log(formatDate2(val.TanggalJatuhTempo));
-                        //nomor[21].innerHTML = workingDaysBetweenDates(formatDate2(val.TanggalJatuhTempo), formatDate1(Date.now())) / 68 * 100;
-                        var angkaTarget = nomor[21].firstChild.nodeValue;
-                        var angkaRealita = nomor[23].firstChild.nodeValue;
-                        var hasil1 = angkaTarget.replace(/[a-z]/g, "");
-                        var hasilangkaTarget = hasil1.replace(/[/]/g, "");
-                        var hasil2 = angkaRealita.replace(/[a-z]/g, "");
-                        var hasilangkaRealita = hasil2.replace(/[/]/g, "");
-                        if (hasilangkaTarget < hasilangkaRealita) {
-                            nomor[24].innerHTML = "A HEAD";
-                        } else if (hasilangkaTarget == hasilangkaRealita) {
-                            nomor[24].innerHTML = "ON SCHEDULE";
-                        } else if (hasilangkaTarget > hasilangkaRealita) {
-                            nomor[24].innerHTML = "BEHIND";
-                        }
-                    })
-                }
-            })
-        }
-
-        function convertMiliseconds(miliseconds, format) {
-            var days, hours, minutes, seconds, total_hours, total_minutes, total_seconds;
-
-            total_seconds = parseInt(Math.floor(miliseconds / 1000));
-            total_minutes = parseInt(Math.floor(total_seconds / 60));
-            total_hours = parseInt(Math.floor(total_minutes / 60));
-            days = parseInt(Math.floor(total_hours / 24));
-
-            seconds = parseInt(total_seconds % 60);
-            minutes = parseInt(total_minutes % 60);
-            hours = parseInt(total_hours % 24);
-
-            switch (format) {
-                case 's':
-                    return total_seconds;
-                case 'm':
-                    return total_minutes;
-                case 'h':
-                    return total_hours;
-                case 'd':
-                    return days;
-                default:
-                    return { d: days, h: hours, m: minutes, s: seconds };
-            }
-        };
-
+        
         function AmbilId(id) {
             $.ajax({
                 url: "/MasterSubSubBabs/GetById/" + id,
@@ -444,53 +360,7 @@
                 });
             }
         }
-
-
-        let workingDaysBetweenDates = (d0, d1) => {
-            var holidays = ['2016-05-03', '2016-05-05', '2016-05-07'];
-            var startDate = parseDate(d0);
-            var endDate = parseDate(d1);
-
-            if (endDate < startDate) {
-                return 0;
-            }
-
-            var millisecondsPerDay = 86400 * 1000;
-            startDate.setHours(0, 0, 0, 1);
-            endDate.setHours(23, 59, 59, 999);
-            var diff = endDate - startDate;
-            var days = Math.ceil(diff / millisecondsPerDay);
-
-            var weeks = Math.floor(days / 7);
-            days -= weeks * 2;
-
-            var startDay = startDate.getDay();
-            var endDay = endDate.getDay();
-
-            if (startDay - endDay > 1) {
-                days -= 2;
-            }
-            if (startDay == 0 && endDay != 6) {
-                days--;
-            }
-            if (endDay == 6 && startDay != 0) {
-                days--;
-            }
-            holidays.forEach(day => {
-                if ((day >= d0) && (day <= d1)) {
-                    if ((parseDate(day).getDay() % 6) != 0) {
-                        days--;
-                    }
-                }
-            });
-            return days;
-        }
-
-        function parseDate(input) {
-            var parts = input.match(/(\d+)/g);
-            return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
-        }
-
+        
         function UploadBuku(id) {
             window.location.href = '/MasterSubSubBabs/UploadBukus/' + id;
         }

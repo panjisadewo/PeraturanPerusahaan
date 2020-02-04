@@ -99,14 +99,7 @@ namespace PP.Controllers.ClientView.Client
             var role = userRoles[0];
 
             var kelompok = user.Kelompok;
-            var masterAktivitas = (from masteraktivitas in db.MasterAktivitas
-                                   select new SubBabSubBabVM
-                                   {
-                                       Hari = masteraktivitas.Hari,
-                                       Target = masteraktivitas.Nama,
-                                       PercentTarget = masteraktivitas.Percent
-                                   }).ToList();
-
+            
             if (kelompok == "PPM" || kelompok == "DGM" || kelompok == "GM")
             {
                 var mastersubbab = db.MasterSubSubBab.Include(m => m.SubBab).ToList();
@@ -115,6 +108,14 @@ namespace PP.Controllers.ClientView.Client
             else
             {
                 if (role == "Pimkel") {
+                    var masterAktivitas = (from masteraktivitas in db.MasterAktivitas
+                                           select new SubBabSubBabVM
+                                           {
+                                               Hari = masteraktivitas.Hari,
+                                               Target = masteraktivitas.Nama,
+                                               PercentTarget = masteraktivitas.Percent
+                                           }).ToList();
+
                     var masterSubBabsSaveOtomatis = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)
                                                      join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId
                                                      join subbab in db.MasterSubBab on bab.Id equals subbab.BabId
@@ -140,16 +141,17 @@ namespace PP.Controllers.ClientView.Client
                             {
                                 double hasilPerhitungan = perhitunganHari(item.TanggalJatuhTempo, DateTime.Now);
                                 double hasilPencapaian = hasilPerhitungan / 68 * 100;
+                                double PercentTarget = double.Parse(item2.PercentTarget, System.Globalization.CultureInfo.InvariantCulture);
                                 if (item2.Target == item.Pencapaian)
                                 {
-                                    if (hasilPencapaian > Convert.ToDouble(item2.PercentTarget))
+                                    if (hasilPencapaian > PercentTarget)
                                     {
                                         var masterSubBabsInsert = db.MasterSubSubBab.Single(m => m.Id == item.Id);
                                         masterSubBabsInsert.PercentPencapaian = item2.PercentTarget;
                                         db.SaveChanges();
                                         db.Entry(masterSubBabsInsert).State = System.Data.Entity.EntityState.Modified;
                                     }
-                                    if (hasilPencapaian < Convert.ToDouble(item2.PercentTarget))
+                                    if (hasilPencapaian < PercentTarget)
                                     {
                                         var masterSubBabsInsert = db.MasterSubSubBab.Single(m => m.Id == item.Id);
                                         masterSubBabsInsert.PercentPencapaian = hasilPencapaian.ToString();
@@ -179,6 +181,41 @@ namespace PP.Controllers.ClientView.Client
                             }
                         }
                     }
+                    var masterSubBabChange = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)
+                                                     join bab in db.MasterBab on kelompoks.Id equals bab.KelompokId
+                                                     join subbab in db.MasterSubBab on bab.Id equals subbab.BabId
+                                                     join subsubbab in db.MasterSubSubBab on subbab.Id equals subsubbab.SubBabId into sbab
+                                                     from ssbab in sbab
+                                                     select new MasterSubSubBabVM
+                                                     {
+                                                         Id = ssbab.Id,
+                                                         TanggalJatuhTempo = ssbab.TanggalJatuhTempo,
+                                                         PercentTarget = ssbab.PercentTarget,
+                                                         NamaPencapaian = ssbab.PercentPencapaian
+                                                     }).ToList();
+
+                    foreach (var item6 in masterSubBabChange)
+                    {
+                        double PercentPencapaian = double.Parse(item6.NamaPencapaian, System.Globalization.CultureInfo.InvariantCulture);
+                        double PercentTarget = double.Parse(item6.PercentTarget, System.Globalization.CultureInfo.InvariantCulture);
+                        if (PercentTarget < PercentPencapaian) {
+                            var masterSubBabsInsert = db.MasterSubSubBab.Single(m => m.Id == item6.Id);
+                            masterSubBabsInsert.StatusProposal = "A HEAD";
+                            db.SaveChanges();
+                            db.Entry(masterSubBabsInsert).State = System.Data.Entity.EntityState.Modified;
+                        } else if (PercentTarget == PercentPencapaian) {
+                            var masterSubBabsInsert = db.MasterSubSubBab.Single(m => m.Id == item6.Id);
+                            masterSubBabsInsert.StatusProposal = "ON SCHEDULE";
+                            db.SaveChanges();
+                            db.Entry(masterSubBabsInsert).State = System.Data.Entity.EntityState.Modified;
+                        } else if (PercentTarget > PercentPencapaian) {
+                            var masterSubBabsInsert = db.MasterSubSubBab.Single(m => m.Id == item6.Id);
+                            masterSubBabsInsert.StatusProposal = "BEHIND";
+                            db.SaveChanges();
+                            db.Entry(masterSubBabsInsert).State = System.Data.Entity.EntityState.Modified;
+                        }
+                    }
+
                 }
                 
                 var mastersubbab = (from kelompoks in db.MasterKelompok.Where(x => x.Nama == kelompok)
